@@ -18,6 +18,8 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <script src="https://unpkg.com/ionicons@4.4.6/dist/ionicons.js"></script>
 </head>
 
 <body>
@@ -43,32 +45,33 @@
         <form class="form-inline" style="font-family: 'Retro Computer';">
             <div class="md-form my-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search..." aria-label="Search">
-                <button class="btn btn-dark my-2 my-sm-0" type="button">Search</button>
+                <a href="#">
+                    <ion-icon name="search" style="text-decoration: none; color: white; font-size: 28px"></ion-icon>
+                </a>
             </div>
         </form>
     </nav>
 
     <!--Jumbotron-->
-    <div class="row">
-        <div class="col">
-            <div class="jumbotron text-center bg-success jumbotron-dark">
-                <div class="text-white">
-                    <h1>
-                        Lock up your passwords with <span style="font-family: 'Retro Computer';">LOCKBOX</span>!
-                    </h1>
-                    <h2>Generate unique and secure passwords that are tough to
-                        crack.</h2>
-                </div>
-                <div class="form-group">
-                    &nbsp;
-                </div>
-                <div style="font-family: 'Retro Computer';">
-                    <button type="button" class="btn btn-light btn-lg">Signup</button>
-                    <button type="button" class="btn btn-light btn-lg">Login</button>
-                </div>
-            </div>
+
+    <div class="jumbotron text-center bg-success jumbotron-dark">
+        <div class="text-white">
+            <h1>
+                Lock up your passwords with <span style="font-family: 'Retro Computer';">LOCKBOX</span>!
+            </h1>
+            <h2>Generate unique and secure passwords that are tough to
+                crack.</h2>
+        </div>
+        <div class="form-group">
+            &nbsp;
+        </div>
+        <div style="font-family: 'Retro Computer';">
+            <button type="button" class="btn btn-light btn-lg">Signup</button>
+            <button type="button" class="btn btn-light btn-lg">Login</button>
         </div>
     </div>
+    </div>
+
 
     <!--Information-->
     <div class="row">
