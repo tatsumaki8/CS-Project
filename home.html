@@ -21,138 +21,144 @@
 
     <script src="https://unpkg.com/ionicons@4.4.6/dist/ionicons.js"></script>
 </head>
+<style>
+    font-face{
+        font-family: 'Retro Computer';
+        src: url('./rsc/Retro Computer.ttf')
+    }
+</style>
 
 <body>
     <!--Navbar-->
-    <nav class="navbar navbar-expand-sm bg-success navbar-dark">
-        <a class="navbar-brand" href="#">
-            <img src="./rsc/LockBox_Logo.png" alt="Logo" style="width: 200px">
-        </a>
-        <ul class="navbar-nav mr-auto" style="font-family: 'Retro Computer'; font-size: 18pt">
-            <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Donate</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Help</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Contact Us</a>
-            </li>
-        </ul>
-        <form class="form-inline" style="font-family: 'Retro Computer';">
-            <div class="md-form my-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search..." aria-label="Search">
-                <a href="#">
-                    <ion-icon name="search" style="text-decoration: none; color: white; font-size: 28px"></ion-icon>
-                </a>
-            </div>
-        </form>
-    </nav>
-
-    <!--Jumbotron-->
-
-    <div class="jumbotron text-center bg-success jumbotron-dark">
-        <div class="text-white">
-            <h1>
-                Lock up your passwords with <span style="font-family: 'Retro Computer';">LOCKBOX</span>!
-            </h1>
-            <h2>Generate unique and secure passwords that are tough to
-                crack.</h2>
-        </div>
-        <div class="form-group">
-            &nbsp;
-        </div>
-        <div style="font-family: 'Retro Computer';">
-            <button type="button" class="btn btn-light btn-lg">Signup</button>
-            <button type="button" class="btn btn-light btn-lg">Login</button>
-        </div>
-    </div>
-    </div>
-
-
-    <!--Information-->
-    <div class="row">
-        <div class="col text-center">
-            <h3 style="font-family: 'Retro Computer';">Free</h3>
-            <div class="form-group">
-                &nbsp;
-            </div>
-            <img src="./rsc/free.png" alt="Free" style="height: 100px">
-            <div class="form-group">
-                &nbsp;
-            </div>
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-8">
-                    <p>Manage hundreds of passwords and personal information all in one place for <strong>free</strong>.</p>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-sm bg-success navbar-dark">
+            <a class="navbar-brand" href="#">
+                <img src="./rsc/LockBox_Logo.png" alt="Logo" style="width: 200px">
+            </a>
+            <ul class="navbar-nav mr-auto" style="font-family: 'Retro Computer'; font-size: 18pt">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Donate</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Help</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Us</a>
+                </li>
+            </ul>
+            <form class="form-inline" style="font-family: 'Retro Computer';">
+                <div class="md-form my-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search..." aria-label="Search">
+                    <a href="#">
+                        <ion-icon name="search" style="text-decoration: none; color: white; font-size: 28px"></ion-icon>
+                    </a>
                 </div>
-                <div class="col-2"></div>
-            </div>
-            <div class="col"></div>
-        </div>
-        <div class="col text-center">
-            <h3 style="font-family: 'Retro Computer';">Secure</h3>
-            <div class="form-group">
-                &nbsp;
-            </div>
-            <img src="./rsc/shield.png" alt="shield" style="height: 100px">
-            <div class="form-group">
-                &nbsp;
-            </div>
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-8">
-                    <p>We use proven and trusted <strong>OpenSSL encryption</strong> to securely store your
-                        information.</p>
-                </div>
-                <div class="col-2"></div>
-            </div>
-        </div>
-        <div class="col text-center">
-            <h3 style="font-family: 'Retro Computer';">Convenient</h3>
-            <div class="form-group">
-                &nbsp;
-            </div>
-            <img src="./rsc/ez.png" alt="ez" style="height: 100px">
-            <div class="form-group">
-                &nbsp;
-            </div>
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-8">
-                    <p>Generates <strong>random</strong> complicated <strong>passwords</strong> that hackers can't
-                        crack.
-                        Just
-                        remember one master password.</p>
-                </div>
-                <div class="col-2"></div>
-            </div>
-        </div>
-    </div>
+            </form>
+        </nav>
 
-    <!--Footer-->
-    <nav class="navbar navbar-expand-sm bg-success navbar-dark justify-content-center fixed-bottom">
-        <ul class="navbar-nav" style="font-family: 'Retro Computer';">
-            <span class="navbar-text">
+        <!--Jumbotron-->
+
+        <div class="jumbotron text-center bg-success jumbotron-dark jumbotron-fluid">
+            <div class="text-white">
+                <h1>
+                    Lock up your passwords with <span style="font-family: 'Retro Computer';">LOCKBOX</span>!
+                </h1>
+                <h2>Generate unique and secure passwords that are tough to
+                    crack.</h2>
+            </div>
+            <div class="form-group">
+                &nbsp;
+            </div>
+            <div style="font-family: 'Retro Computer';">
+                <button type="button" class="btn btn-light btn-lg">Signup</button>
+                <button type="button" class="btn btn-light btn-lg">Login</button>
+            </div>
+        </div>
+
+        <!--Information-->
+        <div class="row">
+            <div class="col text-center">
+                <h3 style="font-family: 'Retro Computer';">Free</h3>
+                <div class="form-group">
+                    &nbsp;
+                </div>
+                <img src="./rsc/free.png" alt="Free" style="height: 100px">
+                <div class="form-group">
+                    &nbsp;
+                </div>
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <p>Manage hundreds of passwords and personal information all in one place for <strong>free</strong>.</p>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="col text-center">
+                <h3 style="font-family: 'Retro Computer';">Secure</h3>
+                <div class="form-group">
+                    &nbsp;
+                </div>
+                <img src="./rsc/shield.png" alt="shield" style="height: 100px">
+                <div class="form-group">
+                    &nbsp;
+                </div>
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <p>We use proven and trusted <strong>OpenSSL encryption</strong> to securely store your
+                            information.</p>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+            </div>
+            <div class="col text-center">
+                <h3 style="font-family: 'Retro Computer';">Convenient</h3>
+                <div class="form-group">
+                    &nbsp;
+                </div>
+                <img src="./rsc/ez.png" alt="ez" style="height: 100px">
+                <div class="form-group">
+                    &nbsp;
+                </div>
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <p>Generates <strong>random</strong> complicated <strong>passwords</strong> that hackers can't
+                            crack.
+                            Just
+                            remember one master password.</p>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+            </div>
+        </div>
+
+        <!--Footer-->
+        <nav class="navbar navbar-expand-sm bg-success navbar-dark justify-content-center fixed-bottom">
+            <span class="navbar-text" style="font-family: 'Retro Computer';">
                 &copy;2018 LockBox LLC&ensp;
             </span>
-            <li class="nav-item">
-                <a class="nav-link" href="#">&emsp;Support&emsp;</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">&ensp;Privacy&ensp;</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">&ensp;Terms of Service&ensp;</a>
-            </li>
-            <span class="navbar-text">
+            <ul class="navbar-nav" style="font-family: 'Retro Computer';">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">&emsp;Support&emsp;</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">&ensp;Privacy&ensp;</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">&ensp;Terms of Service&ensp;</a>
+                </li>
+            </ul>
+            <span class="navbar-text" style="font-family: 'Retro Computer';">
                 &ensp;12 October, 2018
             </span>
-        </ul>
-    </nav>
+        </nav>
+    </div>
 </body>
 
 </html>
