@@ -25,31 +25,30 @@
     <script src="./home.js"></script>
 </head>
 <style>
-    @font-face{
+    @font-face {
         font-family: 'Retro Computer';
         src: url('./rsc/Retro\ Computer.ttf')
     }
-      
 </style>
 
 <body>
     <!--Navbar-->
     <nav class="navbar navbar-expand-sm bg-success navbar-dark">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="home.html">
             <img src="./rsc/LockBox_Logo.png" alt="Logo" style="width: 200px">
         </a>
         <ul class="navbar-nav mr-auto" style="font-family: 'Retro Computer'; font-size: 18pt">
             <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="about.html">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Donate</a>
+                <a class="nav-link" href="donate.html">Donate</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Help</a>
+                <a class="nav-link" href="help.html">Help</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Contact Us</a>
+                <a class="nav-link" href="contact.html">Contact Us</a>
             </li>
         </ul>
         <form class="form-inline" style="font-family: 'Retro Computer';">
@@ -75,10 +74,8 @@
             &nbsp;
         </div>
         <div style="font-family: 'Retro Computer';">
-            <button type="button" class="btn btn-light btn-lg" onclick="document.getElementById('id02').style.display='block'"
-                style="width:auto;">Signup</button>
-            <button type="button" class="btn btn-light btn-lg" onclick="document.getElementById('id01').style.display='block'"
-                style="width:auto;">Login</button>
+            <button type="button" class="btn btn-light btn-lg" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Signup</button>
+            <button type="button" class="btn btn-light btn-lg" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
         </div>
     </div>
 
@@ -115,8 +112,8 @@
                 <div class="row">
                     <div class="col-2"></div>
                     <div class="col-8">
-                        <p>We use proven and trusted <strong>OpenSSL encryption</strong> to securely store your
-                            information.</p>
+                        <p>We use proven and trusted <strong>OpenSSL encryption</strong> to securely store your information.
+                        </p>
                     </div>
                     <div class="col-2"></div>
                 </div>
@@ -133,10 +130,7 @@
                 <div class="row">
                     <div class="col-2"></div>
                     <div class="col-8">
-                        <p>Generates <strong>random</strong> complicated <strong>passwords</strong> that hackers can't
-                            crack.
-                            Just
-                            remember one master password.</p>
+                        <p>Generates <strong>random</strong> complicated <strong>passwords</strong> that hackers can't crack. Just remember one master password.</p>
                     </div>
                     <div class="col-2"></div>
                 </div>
@@ -148,15 +142,13 @@
         <div class="row">
             <div class="col text-center">
                 <h3 style="font-family: 'Retro Computer';">Creating Strong Passwords</h3>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/aEmF3Iylvr4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/aEmF3Iylvr4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
         <div class="row">
             <div class="col text-center">For instructional purposes only, provided by <strong><a href="https://www.youtube.com/channel/UCOY1X4VeHhjYe0V44hZowMQ">
-                        Safety in Canada</a></strong>
-                on
-                Youtube</div>
+                        Safety in Canada</a></strong> on Youtube
+            </div>
         </div>
     </div>
 
@@ -172,6 +164,9 @@
             </div>
 
             <div class="container">
+                <label for="userName"><b>Email</b></label>
+                <input type="text" placeholder="Enter Email" name="email" required>
+
                 <label for="userName"><b>Username</b></label>
                 <input type="text" placeholder="Enter Username" name="userName" required>
 
@@ -225,7 +220,7 @@
         var modalS = document.getElementById('id02');
 
         // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
+        window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
             } else if (event.target == modalS) {
@@ -233,9 +228,6 @@
             }
         }
     </script>
-
-
-
 
     <!--Footer-->
     <div class="jumbotron text-center bg-dark text-nowrap">
