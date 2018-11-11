@@ -23,13 +23,14 @@
 
     <link rel="stylesheet" href="contact.css">
     <script src="./home.js"></script>
+
+    <style>
+        @font-face {
+            font-family: 'Retro Computer';
+            src: url('./rsc/Retro\ Computer.ttf')
+        }
+    </style>
 </head>
-<style>
-    @font-face {
-        font-family: 'Retro Computer';
-        src: url('./rsc/Retro\ Computer.ttf')
-    }
-</style>
 
 <body>
     <!--Navbar-->
@@ -90,23 +91,23 @@
                     <form method="post" id="message">
                         <div class="form-group row">
                             <div class="col">
-                                <label for="firstName" class="control-label text-white"><b>First Name</b></label>
+                                <label class="control-label text-white"><b>First Name</b></label>
                                 <input type="text" class="form-control" name="firstName" placeholder="First name" required>
                             </div>
                             <div class="col">
-                                <label for="lastName" class="control-label text-white"><b>First Name</b></label>
+                                <label class="control-label text-white"><b>First Name</b></label>
                                 <input type="text" class="form-control" name="lastName" placeholder="Last name" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col">
-                                <label for="formControlInput1" class="control-label text-white"><b>Email address</b></label>
-                                <input type="email" class="form-control" name="formControlInput1" placeholder="name@example.com">
+                                <label class="control-label text-white"><b>Email address</b></label>
+                                <input type="email" class="form-control" name="email" placeholder="name@example.com">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col">
-                                <label for="textarea" class="control-label text-white"><b>Your Message</b></label>
+                                <label class="control-label text-white"><b>Your Message</b></label>
                                 <textarea class="form-control" name="textarea" rows="3"></textarea>
                             </div>
                         </div>
@@ -125,17 +126,37 @@
     </div>
     <br />
     <!--Footer-->
-    <div class="jumbotron text-center bg-dark text-nowrap">
+    <footer class="page-footer bg-dark text-white">
         <div class="container">
-            <div class="row" style="font-family: 'Retro Computer'; text-decoration: none; color: white;">
-                <div class="col">&copy;2018 LockBox LLC</div>
-                <div class="col"><a href="#" style="text-decoration: none; color: white;">Support</a></div>
-                <div class="col"><a href="#" style="text-decoration: none; color: white;">Privacy</a></div>
-                <div class="col"><a href="#" style="text-decoration: none; color: white;">Terms of Service</a></div>
-                <div class="col">9 November, 2018</div>
+            <div class="row text-center d-flex justify-content-center pt-5 mb-3">
+                <div class="col-md-3 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                © 2018 LockBox LLC
+              </h6>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                Support
+              </h6>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                Privacy
+              </h6>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                Terms of Service
+              </h6>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                November 10, 2018
+              </h6>
+                </div>
             </div>
         </div>
-    </div>
+    </footer>
 
 </body>
 

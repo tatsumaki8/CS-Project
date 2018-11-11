@@ -23,13 +23,14 @@
 
     <link rel="stylesheet" href="home.css">
     <script src="./home.js"></script>
+
+    <style>
+        @font-face {
+            font-family: 'Retro Computer';
+            src: url('./rsc/Retro\ Computer.ttf')
+        }
+    </style>
 </head>
-<style>
-    @font-face {
-        font-family: 'Retro Computer';
-        src: url('./rsc/Retro\ Computer.ttf')
-    }
-</style>
 
 <body>
     <!--Navbar-->
@@ -142,7 +143,7 @@
         <div class="row">
             <div class="col text-center">
                 <h3 style="font-family: 'Retro Computer';">Creating Strong Passwords</h3>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/aEmF3Iylvr4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/aEmF3Iylvr4" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
         <div class="row">
@@ -164,16 +165,16 @@
             </div>
 
             <div class="container">
-                <label for="userName"><b>Email</b></label>
+                <label><b>Email</b></label>
                 <input type="text" placeholder="Enter Email" name="email" required>
 
-                <label for="userName"><b>Username</b></label>
+                <label><b>Username</b></label>
                 <input type="text" placeholder="Enter Username" name="userName" required>
 
-                <label for="password"><b>Password</b></label>
+                <label><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="password" required>
 
-                <label for="rpassword"><b>Repeat Password</b></label>
+                <label><b>Repeat Password</b></label>
                 <input type="password" placeholder="Enter Password again" name="rpassword" required>
 
                 <button type="submit">Sign Up</button>
@@ -196,10 +197,10 @@
             </div>
 
             <div class="container">
-                <label for="userName"><b>Username</b></label>
+                <label><b>Username</b></label>
                 <input type="text" placeholder="Enter Username" name="userName" data-toggle="tooltip" required>
 
-                <label for="password"><b>Password</b></label>
+                <label><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="password" required>
 
                 <button type="submit">Login</button>
@@ -230,17 +231,37 @@
     </script>
 
     <!--Footer-->
-    <div class="jumbotron text-center bg-dark text-nowrap">
+    <footer class="page-footer bg-dark text-white navbar-fixed-bottom">
         <div class="container">
-            <div class="row" style="font-family: 'Retro Computer'; text-decoration: none; color: white;">
-                <div class="col">&copy;2018 LockBox LLC</div>
-                <div class="col"><a href="#" style="text-decoration: none; color: white;">Support</a></div>
-                <div class="col"><a href="#" style="text-decoration: none; color: white;">Privacy</a></div>
-                <div class="col"><a href="#" style="text-decoration: none; color: white;">Terms of Service</a></div>
-                <div class="col">9 November, 2018</div>
+            <div class="row text-center d-flex justify-content-center pt-5 mb-3">
+                <div class="col-md-3 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                © 2018 LockBox LLC
+              </h6>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                Support
+              </h6>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                Privacy
+              </h6>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                Terms of Service
+              </h6>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                November 10, 2018
+              </h6>
+                </div>
             </div>
         </div>
-    </div>
+    </footer>
 
 </body>
 

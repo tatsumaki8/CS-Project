@@ -138,3 +138,18 @@ span.psw {
         width: 100%;
     }
 }
+
+body{
+    padding-bottom: 100px;
+}
+
+iframe{
+    border: none;
+}
+
+footer{
+    position: absolute;
+    padding: 0;
+    width: 100%;
+    height: 140px;
+}

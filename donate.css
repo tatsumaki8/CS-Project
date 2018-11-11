@@ -4,3 +4,10 @@
     cursor: pointer;
     border: none;
 }
+
+footer{
+    position: absolute;
+    margin: auto;
+    padding: 0;
+    width: 100%;
+}

@@ -5,3 +5,9 @@
     background-color: rgb(120, 193, 144);
     color: white;
 }
+
+footer{
+    position: absolute;
+    padding: 0;
+    width: 100%;
+}
