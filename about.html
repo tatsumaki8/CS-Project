@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Donate</title>
+    <title>About</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -21,8 +21,8 @@
 
     <script src="https://unpkg.com/ionicons@4.4.6/dist/ionicons.js"></script>
 
-    <link rel="stylesheet" href="about.css">
-    <script src="./home.js"></script>
+
+    <script src="./about.js"></script>
 
     <style>
         @font-face {
@@ -62,50 +62,140 @@
         </form>
     </nav>
 
+
+    <!--Content-->
     <div class="container">
         <div class="row">
-            <div class="col"></div>
-            <div class="col-4 text-center">
-                <br />
-                <h2> About </h2>
-            </div>
-            <div class="col"></div>
-            <div class="row"></div>
+            <div class="col">&nbsp;</div>
         </div>
+        <div class="row">
+            <div class="col">
+                <h2>Our Motivation</h2>
+                <br>
+                We are two students at the University of Texas at Austin looking to create an easy to use and
+                convenient
+                password manager.
+                Our society is dependent upon our various accounts across different websites and services.
+                Whether
+                it
+                be
+                accounts to our favorite social media, bank, gaming, or even cat picture site, it's important
+                to
+                have
+                secure passwords that keep hackers out. With all the different accounts you might have on the
+                internet,
+                managing passwords can be difficult, and you may even decide to use one common password. This is
+                dangerous
+                and allows a hacker who has stolen your password from your favorite cooking recipes site to now
+                be
+                able
+                to
+                access your bank account. Due to these vulnerabilities, we felt it important to make it easy
+                for
+                you to
+                make strong passwords that you won't even need to remember. All you have to do is remember one
+                strong
+                master password for our site, and you're ready to generate passwords for other sites that you
+                can
+                easily
+                lookup and copy and paste!
+            </div>
+            <div class="col">
+                <h2>Password Strength Checker</h2>
+                <br>
+                <span class="w">
+                    <input id="password" placeholder="ENTER PASSWORD" type="password" class="password-input"><br>
+                    Your password can be hacked in at the most
+                    <span id="time" class="text-danger">less than one second
+                    </span><br><br>
+                </span>
+                <i>Your password is checked locally by your own client. No information is stored or shared. Checker
+                    taken from <a href="https://random-ize.com/how-long-to-hack-pass/">
+                        random-ize.</a></i>
+                <script>
+                    $('#password').pwdstr('#time');
+                </script>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <h3 class="text-center">What makes a strong password?</h3><br>
+                The first thing to understand about making a strong password is understanding what makes a weak
+                password.
+                <br><br>
+                Hackers looking to figure out someone's password will use a number of methods. Their first step is to
+                see if your password is among one of the most common passwords. See <a href="https://www.passwordrandom.com/most-popular-passwords">PasswordRandom</a>
+                to see some of the most common passwords people have. Checking to see if your password is among the top
+                10,000 takes no more than a second for a computer. For example, a password of <i>banana</i> would be
+                easily cracked in under a second.
+                <br><br>
+                Now you might be thinking, <i>"My password isn't on this list! I'm safe, right?!" Right?</i> <strong>Wrong</strong>.
+                <br><br>
+                If your password isn't among the most common passwords or sitting out in the open on some hacked
+                database, the next thing hackers will do is to <i>brute force</i> your password. This means checking
+                every possible combination until your password is found. Unfortunely for you, computers are VERY fast
+                at doing this. It could take them from a few seconds to a few days. See the Password Strength Checker
+                above to see how long it might take to crack your password. Luckily for you, adding complexity
+                to your password means that the computer would have to take months, years, even hundreds of thousands
+                of years to finally crack your password if it didn't already burn up from the computing. To add
+                complexity you can do the following:
+                <br><br>
+                <ol>
+                    <li>Add more characters. This is by far the most effective thing at making a password hard to
+                        crack.</li>
+                    <li>Use mixed case. tHiS MEanS uSINg UPper and lowER CAsE lEtTeRs. This doubles the amount of
+                        different possibilities the computer must go through on every character assuming you were using
+                        just lower case to begin with.</li>
+                    <li>Add some numbers. It's another thing 10 things the computer has to guess for every character.</li>
+                    <li>Add special characters such as !@#$%^&*. This depends on whether a website allows some of these
+                        characters, but this makes it even more annoying for hackers to figure out your password.</li>
+                </ol>
+                Having an awesomely complex password doesn't mean you're safe. Weak encryption from the website you're
+                using, clicking shady links, writing your password down somewhere someone can find, sharing passwords,
+                entering your password on a fake website, and perhaps other <a href="https://en.wikipedia.org/wiki/Social_engineering_(security)">social
+                    engineering</a> techniques can result in your information being comprimised. Some of these are out
+                of your control, but it's important to be cautious and think about what sites you want to share any of
+                your information with.
+            </div>
+        </div>
+    </div>
 
-        <!--Footer-->
-        <br />
-        <footer class="page-footer bg-dark text-white navbar-fixed-bottom">
-            <div class="container">
-                <div class="row text-center d-flex justify-content-center pt-5 mb-3">
-                    <div class="col-md-3 mb-3">
-                        <h6 class="text-uppercase font-weight-bold">
-                © 2018 LockBox LLC
-              </h6>
-                    </div>
-                    <div class="col-md-2 mb-3">
-                        <h6 class="text-uppercase font-weight-bold">
-                Support
-              </h6>
-                    </div>
-                    <div class="col-md-2 mb-3">
-                        <h6 class="text-uppercase font-weight-bold">
-                Privacy
-              </h6>
-                    </div>
-                    <div class="col-md-2 mb-3">
-                        <h6 class="text-uppercase font-weight-bold">
-                Terms of Service
-              </h6>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <h6 class="text-uppercase font-weight-bold">
-                November 10, 2018
-              </h6>
-                    </div>
+
+
+    <!--Footer-->
+    <br />
+    <footer class="footer bg-dark text-white">
+        <div class="container">
+            <div class="row text-center d-flex justify-content-center pt-5 mb-3">
+                <div class="col-md-3 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                        © 2018 LockBox LLC
+                    </h6>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                        Support
+                    </h6>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                        Privacy
+                    </h6>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                        Terms of Service
+                    </h6>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                        November 10, 2018
+                    </h6>
                 </div>
             </div>
-        </footer>
+        </div>
+    </footer>
 
 </body>
 

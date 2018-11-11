@@ -1,13 +1,13 @@
-#message{
+#message {
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 20px;
     background-color: rgb(120, 193, 144);
     color: white;
+    border-radius: 10px;
 }
 
-footer{
+footer {
     position: absolute;
-    padding: 0;
     width: 100%;
 }

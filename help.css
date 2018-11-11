@@ -3,9 +3,7 @@
     font-size: 14pt;
 }
 
-footer{
+footer {
     position: absolute;
-    margin: auto;
-    padding: 0;
     width: 100%;
 }

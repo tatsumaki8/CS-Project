@@ -1,13 +1,11 @@
-.btn-lg{
+.btn-lg {
     background-color: rgb(120, 193, 144);
     font-size: 24pt;
     cursor: pointer;
     border: none;
 }
 
-footer{
+footer {
     position: absolute;
-    margin: auto;
-    padding: 0;
     width: 100%;
 }
