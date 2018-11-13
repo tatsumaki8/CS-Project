@@ -22,6 +22,7 @@
     <script src="https://unpkg.com/ionicons@4.4.6/dist/ionicons.js"></script>
 
     <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="sticky-footer.css">
     <script src="./home.js"></script>
 
     <style>
@@ -33,6 +34,7 @@
 </head>
 
 <body>
+
     <!--Navbar-->
     <nav class="navbar navbar-expand-sm bg-success navbar-dark">
         <a class="navbar-brand" href="home.html">
@@ -62,181 +64,197 @@
         </form>
     </nav>
 
-    <!--Jumbotron-->
-    <div class="jumbotron text-center bg-success jumbotron-dark jumbotron-fluid">
-        <div class="text-white">
-            <h1>
-                Lock up your passwords with <span style="font-family: 'Retro Computer';">LOCKBOX</span>!
-            </h1>
-            <h2>Generate unique and secure passwords that are tough to
-                crack.</h2>
+    <main>
+        <!--Jumbotron-->
+        <div class="jumbotron text-center bg-success jumbotron-dark jumbotron-fluid">
+            <div class="text-white">
+                <h1>
+                    Lock up your passwords with <span style="font-family: 'Retro Computer';">LOCKBOX</span>!
+                </h1>
+                <h2>Generate unique and secure passwords that are tough to
+                    crack.</h2>
+            </div>
+            <div class="form-group">
+                &nbsp;
+            </div>
+            <div style="font-family: 'Retro Computer';">
+                <button type="button" class="btn btn-light btn-lg" data-toggle="modal" data-target="#signupModal">Signup</button>
+                <button type="button" class="btn btn-light btn-lg" data-toggle="modal" data-target="#loginModal">Login</button>
+            </div>
         </div>
-        <div class="form-group">
-            &nbsp;
-        </div>
-        <div style="font-family: 'Retro Computer';">
-            <button type="button" class="btn btn-light btn-lg" onclick="document.getElementById('id02').style.display='block'"
-                style="width:auto;">Signup</button>
-            <button type="button" class="btn btn-light btn-lg" onclick="document.getElementById('id01').style.display='block'"
-                style="width:auto;">Login</button>
-        </div>
-    </div>
 
-    <!--Information-->
-    <div class="container" style="padding-bottom: 100px;">
-        <div class="row">
-            <div class="col text-center">
-                <h3 style="font-family: 'Retro Computer';">Free</h3>
-                <div class="form-group">
-                    &nbsp;
-                </div>
-                <img src="./rsc/free.png" alt="Free" style="height: 100px">
-                <div class="form-group">
-                    &nbsp;
-                </div>
-                <div class="row">
-                    <div class="col-2"></div>
-                    <div class="col-8">
-                        <p>Manage hundreds of passwords and personal information all in one place for <strong>free</strong>.</p>
+        <!--Information-->
+        <div class="container" style="padding-bottom: 100px;">
+            <div class="row">
+                <div class="col text-center">
+                    <h3 style="font-family: 'Retro Computer';">Free</h3>
+                    <div class="form-group">
+                        &nbsp;
                     </div>
-                    <div class="col-2"></div>
-                </div>
-                <div class="col"></div>
-            </div>
-            <div class="col text-center">
-                <h3 style="font-family: 'Retro Computer';">Secure</h3>
-                <div class="form-group">
-                    &nbsp;
-                </div>
-                <img src="./rsc/shield.png" alt="shield" style="height: 100px">
-                <div class="form-group">
-                    &nbsp;
-                </div>
-                <div class="row">
-                    <div class="col-2"></div>
-                    <div class="col-8">
-                        <p>We use proven and trusted <strong>OpenSSL encryption</strong> to securely store your
-                            information.
-                        </p>
+                    <img src="./rsc/free.png" alt="Free" style="height: 100px">
+                    <div class="form-group">
+                        &nbsp;
                     </div>
-                    <div class="col-2"></div>
-                </div>
-            </div>
-            <div class="col text-center">
-                <h3 style="font-family: 'Retro Computer';">Convenient</h3>
-                <div class="form-group">
-                    &nbsp;
-                </div>
-                <img src="./rsc/ez.png" alt="ez" style="height: 100px">
-                <div class="form-group">
-                    &nbsp;
-                </div>
-                <div class="row">
-                    <div class="col-2"></div>
-                    <div class="col-8">
-                        <p>Generates <strong>random</strong> complicated <strong>passwords</strong> that hackers can't
-                            crack. Just remember one master password.</p>
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-8">
+                            <p>Manage hundreds of passwords and personal information all in one place for <strong>free</strong>.</p>
+                        </div>
+                        <div class="col-2"></div>
                     </div>
-                    <div class="col-2"></div>
+                    <div class="col"></div>
+                </div>
+                <div class="col text-center">
+                    <h3 style="font-family: 'Retro Computer';">Secure</h3>
+                    <div class="form-group">
+                        &nbsp;
+                    </div>
+                    <img src="./rsc/shield.png" alt="shield" style="height: 100px">
+                    <div class="form-group">
+                        &nbsp;
+                    </div>
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-8">
+                            <p>We use proven and trusted <strong>OpenSSL encryption</strong> to securely store your
+                                information.
+                            </p>
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <h3 style="font-family: 'Retro Computer';">Convenient</h3>
+                    <div class="form-group">
+                        &nbsp;
+                    </div>
+                    <img src="./rsc/ez.png" alt="ez" style="height: 100px">
+                    <div class="form-group">
+                        &nbsp;
+                    </div>
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-8">
+                            <p>Generates <strong>random</strong> complicated <strong>passwords</strong> that hackers
+                                can't
+                                crack. Just remember one master password.</p>
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <h3 style="font-family: 'Retro Computer';">Creating Strong Passwords</h3>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/aEmF3Iylvr4"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col text-center">For instructional purposes only, provided by <strong><a target="_blank"
+                            rel="noopener noreferrer" href="https://www.youtube.com/channel/UCOY1X4VeHhjYe0V44hZowMQ">
+                            Safety in Canada</a></strong> on Youtube
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col">&nbsp;</div>
-        </div>
-        <div class="row">
-            <div class="col text-center">
-                <h3 style="font-family: 'Retro Computer';">Creating Strong Passwords</h3>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/aEmF3Iylvr4" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
+
+
+        <!--Signup Modal-->
+        <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="signupModalLabel">Signup</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col text-center">
+                                <img src="./rsc/robot.png" class="img-fluid" width="150" alt="Robot Avatar">
+                            </div>
+                        </div>
+                        <form id="signup" action="" method="POST" onsubmit="return validate();">
+                            <div class="form-group">
+                                <label><b>Email</b></label>
+                                <input type="email" class="form-control" placeholder="Enter Email" name="email" id="email"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label><b>Username</b></label>
+                                <input type="text" class="form-control" placeholder="Enter Username" name="userName"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label><b>Password</b></label>
+                                <input type="password" class="form-control" placeholder="Enter Password" name="password"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label><b>Repeat Password</b></label>
+                                <input type="password" class="form-control" placeholder="Enter Password Again" name="rpassword"
+                                    required>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-success">Complete Signup</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col text-center">For instructional purposes only, provided by <strong><a href="https://www.youtube.com/channel/UCOY1X4VeHhjYe0V44hZowMQ">
-                        Safety in Canada</a></strong> on Youtube
+
+        <!-- Login Modal -->
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col text-center">
+                                <img src="./rsc/robot.png" class="img-fluid" width="150" alt="Robot Avatar">
+                            </div>
+                        </div>
+                        <form id="login" action="" method="POST">
+                            <div class="form-group">
+                                <label><b>Username</b></label>
+                                <input type="text" class="form-control" placeholder="Enter Username" name="userName"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label><b>Password</b></label>
+                                <input type="password" class="form-control" placeholder="Enter Password" name="password"
+                                    required>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-success">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-
-    <!-- Signup Modal -->
-    <div id="id02" class="modal">
-        <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-
-        <!-- Signup Content -->
-        <form id="signup" class="modal-content animate" action="" method="POST" onsubmit="return validate();">
-            <div class="imgcontainer">
-                <img src="./rsc/robot.png" alt="Avatar" class="avatar">
-            </div>
-
-            <div class="container">
-                <label><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" required>
-
-                <label><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="userName" required>
-
-                <label><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="password" required>
-
-                <label><b>Repeat Password</b></label>
-                <input type="password" placeholder="Enter Password again" name="rpassword" required>
-
-                <button type="submit">Sign Up</button>
-            </div>
-
-            <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-            </div>
-        </form>
-    </div>
-
-    <!-- Login Modal -->
-    <div id="id01" class="modal">
-        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-
-        <!-- Login Content -->
-        <form id="login" class="modal-content animate" action="" method="POST">
-            <div class="imgcontainer">
-                <img src="./rsc/robot.png" alt="Avatar" class="avatar">
-            </div>
-            <div class="container">
-                <label><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="userName" data-toggle="tooltip" required>
-
-                <label><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="password" required>
-
-                <button type="submit">Login</button>
-                <label>
-                    <input type="checkbox" checked="checked" name="remember"> Remember me
-                </label>
-            </div>
-
-            <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                <span class="psw"><a href="help.html#forgotpw">Forgot password?</a></span>
-            </div>
-        </form>
-    </div>
-    <script>
-        // Get the modal
-        var modal = document.getElementById('id01');
-        var modalS = document.getElementById('id02');
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            } else if (event.target == modalS) {
-                modalS.style.display = "none";
-            }
-        }
-    </script>
+    </main>
 
     <!--Footer-->
-    <br />
-    <footer class="footer bg-dark text-white">
+    <footer class="footer bg-dark text-white mt-5">
         <div class="container">
             <div class="row text-center d-flex justify-content-center pt-5 mb-3">
                 <div class="col-md-3 mb-3">

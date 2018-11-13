@@ -22,6 +22,7 @@
     <script src="https://unpkg.com/ionicons@4.4.6/dist/ionicons.js"></script>
 
     <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="sticky-footer.css">
     <script src="./home.js"></script>
 
     <style>
@@ -33,6 +34,7 @@
 </head>
 
 <body>
+
     <!--Navbar-->
     <nav class="navbar navbar-expand-sm bg-success navbar-dark">
         <a class="navbar-brand" href="home.html">
@@ -48,7 +50,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="help.html">Help</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="contact.html">Contact Us</a>
             </li>
         </ul>
@@ -62,76 +64,81 @@
         </form>
     </nav>
 
-    <!--Info about Authors-->
-    <div class="container">
-        <div class="row">
+    <main>
+        <!--Info about Authors-->
+        <div class="container">
+            <div class="row">
 
-            <div class="col text-center">
-                <br />
-                <h2> Contact Us </h2>
-                <p>We want to provide others with an easy way to keep track of passwords. Like many people, we have
-                    accounts for school, loyalty programs, email, banking, and much more. It is not secure to use only
-                    one password, but remembering many different
-                    passwords is hard. As students interested in encryption and security, we have learned what makes
-                    passwords secure as well as how to hash, salt, and encrypt passwords and personal information using
-                    open source applications.
-                </p>
+                <div class="col text-center">
+                    <br />
+                    <h2> Contact Us </h2>
+                    <p>We want to provide others with an easy way to keep track of passwords. Like many people, we have
+                        accounts for school, loyalty programs, email, banking, and much more. It is not secure to use
+                        only
+                        one password, but remembering many different
+                        passwords is hard. As students interested in encryption and security, we have learned what
+                        makes
+                        passwords secure as well as how to hash, salt, and encrypt passwords and personal information
+                        using
+                        open source applications.
+                    </p>
 
-                <b>General Information Email:</b> info@lockbox.com<br />
-                <b>Support Email:</b> support@lockbox.com<br />
-                <b>Phone Number:</b> 281-861-4949<br /><br />
-            </div>
-        </div>
-
-
-        <h3 class="text-center"> Got a Question? Send Us A Message!</h3>
-        <div class="row">
-            <div class="col"></div>
-            <div class="max-auto">
-                <div class="row">
-
-                    <!--Message Form-->
-                    <form method="post" id="message">
-                        <div class="form-group row">
-                            <div class="col">
-                                <label class="control-label text-white"><b>First Name</b></label>
-                                <input type="text" class="form-control" name="firstName" placeholder="First name"
-                                    required>
-                            </div>
-                            <div class="col">
-                                <label class="control-label text-white"><b>First Name</b></label>
-                                <input type="text" class="form-control" name="lastName" placeholder="Last name"
-                                    required>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col">
-                                <label class="control-label text-white"><b>Email address</b></label>
-                                <input type="email" class="form-control" name="email" placeholder="name@example.com">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col">
-                                <label class="control-label text-white"><b>Your Message</b></label>
-                                <textarea class="form-control" name="textarea" rows="3"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col text-center">
-                                <button type="submit" class="btn btn-light mb-2">Submit</button>
-                                <button type="reset" class="btn btn-light mb-2">Required</button>
-                            </div>
-                        </div>
-                    </form>
-
+                    <b>General Information Email:</b> info@lockbox.com<br />
+                    <b>Support Email:</b> support@lockbox.com<br />
+                    <b>Phone Number:</b> 281-861-4949<br /><br />
                 </div>
             </div>
-            <div class="col"></div>
+
+
+            <h3 class="text-center"> Got a Question? Send Us A Message!</h3>
+            <div class="row">
+                <div class="col"></div>
+                <div class="max-auto">
+                    <div class="row">
+
+                        <!--Message Form-->
+                        <form method="post" id="message">
+                            <div class="form-group row">
+                                <div class="col">
+                                    <label class="control-label text-white"><b>First Name</b></label>
+                                    <input type="text" class="form-control" name="firstName" placeholder="First name"
+                                        required>
+                                </div>
+                                <div class="col">
+                                    <label class="control-label text-white"><b>First Name</b></label>
+                                    <input type="text" class="form-control" name="lastName" placeholder="Last name"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col">
+                                    <label class="control-label text-white"><b>Email address</b></label>
+                                    <input type="email" class="form-control" name="email" placeholder="name@example.com">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col">
+                                    <label class="control-label text-white"><b>Your Message</b></label>
+                                    <textarea class="form-control" name="textarea" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col text-center">
+                                    <button type="submit" class="btn btn-light mb-2">Submit</button>
+                                    <button type="reset" class="btn btn-light mb-2">Required</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <div class="col"></div>
+            </div>
         </div>
-    </div>
-    <br />
+    </main>
+
     <!--Footer-->
-    <footer class="footer bg-dark text-white">
+    <footer class="footer bg-dark text-white mt-5">
         <div class="container">
             <div class="row text-center d-flex justify-content-center pt-5 mb-3">
                 <div class="col-md-3 mb-3">
