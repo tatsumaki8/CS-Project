@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LockBox</title>
     <link rel="shortcut icon" href="./rsc/favicon.png" type="image/x-icon">
-    
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
@@ -55,10 +55,10 @@
                 <a class="nav-link" href="contact.html">Contact Us</a>
             </li>
         </ul>
-        <form class="form-inline" style="font-family: 'Retro Computer';">
+        <form id="searchForm" method="post" action="search.php" class="form-inline" style="font-family: 'Retro Computer';">
             <div class="md-form my-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search..." aria-label="Search">
-                <a href="#">
+                <input id="searchText" name="searchText" class="form-control mr-sm-2" type="text" placeholder="Search..." aria-label="Search">
+                <a>
                     <ion-icon name="search" style="text-decoration: none; color: white; font-size: 28px"></ion-icon>
                 </a>
             </div>
@@ -117,8 +117,7 @@
                     <div class="row">
                         <div class="col-2"></div>
                         <div class="col-8">
-                            <p>We use proven and trusted <strong>OpenSSL encryption</strong> to securely store your
-                                information.
+                            <p>We use proven and trusted <strong>OpenSSL encryption</strong> to securely store your information.
                             </p>
                         </div>
                         <div class="col-2"></div>
@@ -136,9 +135,7 @@
                     <div class="row">
                         <div class="col-2"></div>
                         <div class="col-8">
-                            <p>Generates <strong>random</strong> complicated <strong>passwords</strong> that hackers
-                                can't
-                                crack. Just remember one master password.</p>
+                            <p>Generates <strong>random</strong> complicated <strong>passwords</strong> that hackers can't crack. Just remember one master password.</p>
                         </div>
                         <div class="col-2"></div>
                     </div>
@@ -151,8 +148,7 @@
                 <div class="col text-center">
                     <h3 style="font-family: 'Retro Computer';">Creating Strong Passwords</h3>
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/aEmF3Iylvr4"
-                            allowfullscreen></iframe>
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/aEmF3Iylvr4" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -167,8 +163,7 @@
 
 
         <!--Signup Modal-->
-        <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -186,23 +181,19 @@
                         <form id="signup" action="" method="POST" onsubmit="return validate();">
                             <div class="form-group">
                                 <label><b>Email</b></label>
-                                <input type="email" class="form-control" placeholder="Enter Email" name="email" id="email"
-                                    required>
+                                <input type="email" class="form-control" placeholder="Enter Email" name="email" id="email" required>
                             </div>
                             <div class="form-group">
                                 <label><b>Username</b></label>
-                                <input type="text" class="form-control" placeholder="Enter Username" name="userName"
-                                    required>
+                                <input type="text" class="form-control" placeholder="Enter Username" name="userName" required>
                             </div>
                             <div class="form-group">
                                 <label><b>Password</b></label>
-                                <input type="password" class="form-control" placeholder="Enter Password" name="password"
-                                    required>
+                                <input type="password" class="form-control" placeholder="Enter Password" name="password" required>
                             </div>
                             <div class="form-group">
                                 <label><b>Repeat Password</b></label>
-                                <input type="password" class="form-control" placeholder="Enter Password Again" name="rpassword"
-                                    required>
+                                <input type="password" class="form-control" placeholder="Enter Password Again" name="rpassword" required>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -215,8 +206,7 @@
         </div>
 
         <!-- Login Modal -->
-        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -234,13 +224,11 @@
                         <form id="login" action="" method="POST">
                             <div class="form-group">
                                 <label><b>Username</b></label>
-                                <input type="text" class="form-control" placeholder="Enter Username" name="userName"
-                                    required>
+                                <input type="text" class="form-control" placeholder="Enter Username" name="userName" required>
                             </div>
                             <div class="form-group">
                                 <label><b>Password</b></label>
-                                <input type="password" class="form-control" placeholder="Enter Password" name="password"
-                                    required>
+                                <input type="password" class="form-control" placeholder="Enter Password" name="password" required>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

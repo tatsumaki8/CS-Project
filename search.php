@@ -1,3 +1,18 @@
+<?php
+$home = file_get_contents("https://fall-2018.cs.utexas.edu/cs329e-mitra/valex8/project/home.html");
+$homePage = "home.html";
+$about = file_get_contents("https://fall-2018.cs.utexas.edu/cs329e-mitra/valex8/project/about.html");
+$aboutPage = "about.html";
+$help = file_get_contents("https://fall-2018.cs.utexas.edu/cs329e-mitra/valex8/project/help.html");
+$helpPage = "help.html";
+$donate = file_get_contents("https://fall-2018.cs.utexas.edu/cs329e-mitra/valex8/project/donate.html");
+$donatePage = "donate.html";
+$contact = file_get_contents("https://fall-2018.cs.utexas.edu/cs329e-mitra/valex8/project/contact.html");
+$contactPage = "contact.html";
+
+$search = $_POST["searchText"];
+
+print <<<TOP1
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,7 +60,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="about.html">About</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="donate.html">Donate</a>
             </li>
             <li class="nav-item">
@@ -64,34 +79,41 @@
             </div>
         </form>
     </nav>
-
     <main>
         <div class="container pt-5">
-            <h2 class="text-center"> Donate </h2>
-            <div class="row">
-                <div class="col text-center mt-3 mb-3">
-                    <img class="img-fluid" src="./rsc/robot.png" id="robot" alt="Robot" width="350">
-                </div>
-            </div>
+            <h2 class="text-center"> Search Results For "
+TOP1;
+    echo $search;
 
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-8 text-center pt-3">
-                    <p> LockBox is a password manager that is completely free of charge for users. We strive to provide the best software and features for our users, but maintaining and developing a high quality password manager costs time and money. If you
-                        are enjoying LockBox, then consider making a donation to show your appreciation and to support its development!
-                    </p>
-                    <p>
-                        Your donation will be used for continuous maintenance and development of Lockbox in order to securely store your information. We accept donations with PayPal and credit cards (VISA, Mastercard, American Express, Discover)
-                    </p>
-                    <button type="button" class="btn btn-lg mt-3 text-white">Donate Now</button>
+print <<<TOP2
+        "</h2>
+        <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8 text-center pt-3">
+TOP2;
+
+if (stripos($home, $search) !== false){
+    echo '<a href="'.$homePage.'">'."Home".'</a><br />';
+}
+if (stripos($about, $search) !== false){
+    echo '<a href="'.$aboutPage.'">'."About".'</a><br />';
+}
+if (stripos($help, $search) !== false){
+    echo '<a href="'.$helpPage.'">'."Help".'</a><br />';
+}
+if (stripos($donate, $search) !== false){
+    echo '<a href="'.$donatePage.'">'."Donate".'</a><br />';
+}
+if (stripos($contact, $search) !== false){
+    echo '<a href="'.$contactPage.'">'."Contact".'</a><br />';
+}
+
+print <<<BOTTOM
                 </div>
                 <div class="col-2"></div>
             </div>
-
         </div>
     </main>
-
-    <!--Footer-->
     <br />
     <footer class="footer bg-dark text-white mt-5">
         <div class="container">
@@ -105,7 +127,7 @@
                     <h6 class="text-uppercase font-weight-bold">
                         Support
                     </h6>
-                </div>
+                    </div>
                 <div class="col-md-2 mb-3">
                     <h6 class="text-uppercase font-weight-bold">
                         Privacy
@@ -124,7 +146,8 @@
             </div>
         </div>
     </footer>
-
 </body>
 
 </html>
+BOTTOM;
+?>
