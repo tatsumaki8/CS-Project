@@ -108,44 +108,14 @@ if (stripos($contact, $search) !== false){
     echo '<a href="'.$contactPage.'">'."Contact".'</a><br />';
 }
 
-print <<<BOTTOM
-                </div>
+if (stripos($home, $search) == false && stripos($about, $search) == false && stripos($help, $search) == false && stripos($donate, $search) == false && stripos($contact, $search) == false){
+    echo "No results were found.";
+}
                 <div class="col-2"></div>
             </div>
         </div>
     </main>
     <br />
-    <footer class="footer bg-dark text-white mt-5">
-        <div class="container">
-            <div class="row text-center d-flex justify-content-center pt-5 mb-3">
-                <div class="col-md-3 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                        © 2018 LockBox LLC
-                    </h6>
-                </div>
-                <div class="col-md-2 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                        Support
-                    </h6>
-                    </div>
-                <div class="col-md-2 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                        Privacy
-                    </h6>
-                </div>
-                <div class="col-md-2 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                        Terms of Service
-                    </h6>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                        November 10, 2018
-                    </h6>
-                </div>
-            </div>
-        </div>
-    </footer>
 </body>
 
 </html>
