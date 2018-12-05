@@ -8,11 +8,5 @@
 }
 
 #gen_pw_length_text {
-    width: 38px;
-    text-align: center;
-}
-
-.sizer {
-  width: 750px;
-  margin: auto;
+    width: 80px;
 }

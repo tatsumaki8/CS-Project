@@ -57,7 +57,8 @@
         </ul>
         <form id="searchForm" method="post" action="search.php" class="form-inline" style="font-family: 'Retro Computer';">
             <div class="md-form my-0">
-                <input id="searchText" name="searchText" class="form-control mr-sm-2" type="text" placeholder="Search..." aria-label="Search">
+                <input id="searchText" name="searchText" class="form-control mr-sm-2" type="text" placeholder="Search..."
+                    aria-label="Search">
                 <a>
                     <ion-icon name="search" style="text-decoration: none; color: white; font-size: 28px"></ion-icon>
                 </a>
@@ -117,7 +118,8 @@
                     <div class="row">
                         <div class="col-2"></div>
                         <div class="col-8">
-                            <p>We use proven and trusted <strong>OpenSSL encryption</strong> to securely store your information.
+                            <p>We use proven and trusted <strong>OpenSSL encryption</strong> to securely store your
+                                information.
                             </p>
                         </div>
                         <div class="col-2"></div>
@@ -135,7 +137,8 @@
                     <div class="row">
                         <div class="col-2"></div>
                         <div class="col-8">
-                            <p>Generates <strong>random</strong> complicated <strong>passwords</strong> that hackers can't crack. Just remember one master password.</p>
+                            <p>Generates <strong>random</strong> complicated <strong>passwords</strong> that hackers
+                                can't crack. Just remember one master password.</p>
                         </div>
                         <div class="col-2"></div>
                     </div>
@@ -150,7 +153,8 @@
                 <div class="col-8 text-center">
                     <button type="button" class="btn btn-lg btn-success mb-3" onclick="generatePassword();" id="generatePassword">Generate
                         Password</button><br>
-                    <input type="text" class="mb-1 text-center text-info" name="generated_pw" id="generated_pw" readonly><br />
+                    <input type="text" class="mb-1 text-center text-info" name="generated_pw" id="generated_pw"
+                        readonly><br />
                     <script>
                         window.addEventListener("load", function() {
                             generatePassword();
@@ -178,8 +182,10 @@
                         <div class="form-row">
                             <div class="col-2"></div>
                             <div class="col-8">
-                                <input type="number" name="gen_pw_length_text" id="gen_pw_length_text" min=8 max=30 oninput="sliderValue('gen_pw_length_text','gen_pw_length');" value="8">&nbsp;
-                                <input type="range" name="gen_pw_length" id="gen_pw_length" min="8" max="30" oninput="sliderValue('gen_pw_length', 'gen_pw_length_text');" value="8">
+                                <input type="number" name="gen_pw_length_text" id="gen_pw_length_text" min=8 max=30
+                                    oninput="sliderValue('gen_pw_length_text','gen_pw_length');" value="8">&nbsp;
+                                <input type="range" name="gen_pw_length" id="gen_pw_length" min="8" max="30" oninput="sliderValue('gen_pw_length', 'gen_pw_length_text');"
+                                    value="8">
                             </div>
                             <div class="col-2"></div>
                         </div>
@@ -191,14 +197,15 @@
                 <div class="col">&nbsp;</div>
             </div>
             <div class="row">
-                <div class="col text-center">
+                <div class="col-2"></div>
+                <div class="col-8 text-center">
                     <h3 style="font-family: 'Retro Computer';">Creating Strong Passwords</h3>
-                    <div class="sizer">
-                        <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/aEmF3Iylvr4" allowfullscreen></iframe>
-                        </div>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/aEmF3Iylvr4"
+                            allowfullscreen></iframe>
                     </div>
                 </div>
+                <div class="col-2"></div>
             </div>
             <div class="row">
                 <div class="col text-center">For instructional purposes only, provided by <strong><a target="_blank"
@@ -210,7 +217,8 @@
 
 
         <!--Signup Modal-->
-        <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+        <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -228,19 +236,23 @@
                         <form id="signup" action="" method="POST" onsubmit="return validate();">
                             <div class="form-group">
                                 <label><b>Email</b></label>
-                                <input type="email" class="form-control" placeholder="Enter Email" name="email" id="email" required>
+                                <input type="email" class="form-control" placeholder="Enter Email" name="email" id="email"
+                                    required>
                             </div>
                             <div class="form-group">
                                 <label><b>Username</b></label>
-                                <input type="text" class="form-control" placeholder="Enter Username" name="userName" required>
+                                <input type="text" class="form-control" placeholder="Enter Username" name="userName"
+                                    required>
                             </div>
                             <div class="form-group">
                                 <label><b>Password</b></label>
-                                <input type="password" class="form-control" placeholder="Enter Password" name="password" required>
+                                <input type="password" class="form-control" placeholder="Enter Password" name="password"
+                                    required>
                             </div>
                             <div class="form-group">
                                 <label><b>Repeat Password</b></label>
-                                <input type="password" class="form-control" placeholder="Enter Password Again" name="rpassword" required>
+                                <input type="password" class="form-control" placeholder="Enter Password Again" name="rpassword"
+                                    required>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -253,7 +265,8 @@
         </div>
 
         <!-- Login Modal -->
-        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -271,11 +284,13 @@
                         <form id="login" action="" method="POST">
                             <div class="form-group">
                                 <label><b>Username</b></label>
-                                <input type="text" class="form-control" placeholder="Enter Username" name="userName" required>
+                                <input type="text" class="form-control" placeholder="Enter Username" name="userName"
+                                    required>
                             </div>
                             <div class="form-group">
                                 <label><b>Password</b></label>
-                                <input type="password" class="form-control" placeholder="Enter Password" name="password" required>
+                                <input type="password" class="form-control" placeholder="Enter Password" name="password"
+                                    required>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
