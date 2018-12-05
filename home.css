@@ -1,0 +1,18 @@
+#generated_pw {
+    background-color: transparent;
+    border: 0px solid;
+    width: 100%;
+    font-weight: bold;
+    font-size: 20pt;
+    font-family: monospace;
+}
+
+#gen_pw_length_text {
+    width: 38px;
+    text-align: center;
+}
+
+.sizer {
+  width: 750px;
+  margin: auto;
+}

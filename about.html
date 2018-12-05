@@ -97,43 +97,6 @@
                 </div>
             </div>
 
-            <h2 class="text-center">Password Generator</h2>
-            <div class="row mb-3">
-                <div class="col-sm"></div>
-                <div class="col-sm">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="gen_pw_AZ" id="gen_pw_AZ" checked>
-                            <label class="form-check-label" for="gen_pw_AZ">A-Z</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="gen_pw_az" id="gen_pw_az" checked>
-                            <label class="form-check-label" for="gen_pw_AZ">a-z</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="gen_pw_09" id="gen_pw_num" checked>
-                            <label class="form-check-label" for="gen_pw_num">0-9</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="gen_pw_misc" id="gen_pw_misc">
-                            <label class="form-check-label" for="gen_pw_misc">!@#$%^&*</label>
-                        </div>
-                        <div class="form-row">
-                            <input type="number" name="gen_pw_length_text" id="gen_pw_length_text" min=8 max=36 oninput="sliderValue('gen_pw_length_text','gen_pw_length');" value="8">&nbsp;
-                            <input type="range" name="gen_pw_length" id="gen_pw_length" min="8" max="36" oninput="sliderValue('gen_pw_length', 'gen_pw_length_text');" value="8">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm text-center">
-                    <button type="button" class="btn btn-lg btn-success mb-3" onclick="generatePassword();">Generate
-                        Password</button><br>
-                    <input type="text" class="mb-1 text-center" name="generated_pw" id="generated_pw" readonly><br>
-                    <button type="button" class="btn btn-sm btn-primary" onclick="copy();">Copy</button><br>
-                    <div id="copied" class="font-italic text-muted"></div>
-                </div>
-                <div class="col-sm"></div>
-            </div>
-
             <div class="row">
                 <div class="col-sm">
                     <h3 class="text-center mb-3">What makes a strong password?</h3> The first thing to understand about making a strong password is understanding what makes a weak password.
