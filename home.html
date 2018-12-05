@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="sticky-footer.css">
     <script src="./home.js"></script>
+    <script src="./date.js"></script>
 
     <style>
         @font-face {
@@ -332,9 +333,13 @@
                     </h6>
                 </div>
                 <div class="col-md-3 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                        November 10, 2018
+                    <h6 class="text-uppercase font-weight-bold" id="currentDate">
                     </h6>
+                    <script>
+                        window.addEventListener("load", function () {
+                            currentDate();
+                        });
+                    </script>
                 </div>
             </div>
         </div>
