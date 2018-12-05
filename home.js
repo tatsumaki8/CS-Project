@@ -19,6 +19,7 @@ function sliderValue(ID1, ID2) {
     var x = document.getElementById(ID1);
     var y = document.getElementById(ID2);
     y.value = x.value;
+    generatePassword();
 }
 
 // Generate the actual password based on inputs
@@ -131,7 +132,7 @@ function copy() {
     var success = document.getElementById("copied");
     if (copyText.value != "") {
         success.innerHTML = "Copied to Clipboard!";
-        setTimeout(function() {
+        setTimeout(function () {
             success.innerHTML = "";
         }, 5000);
     }

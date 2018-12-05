@@ -164,19 +164,22 @@
                     <div id="copied" class="font-italic text-muted"></div><br />
                     <div class="form-group">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" name="gen_pw_AZ" id="gen_pw_AZ" checked>
+                            <input class="form-check-input" type="checkbox" name="gen_pw_AZ" id="gen_pw_AZ" checked
+                                oninput="generatePassword();">
                             <label class="form-check-label" for="gen_pw_AZ">A-Z</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" name="gen_pw_az" id="gen_pw_az" checked>
+                            <input class="form-check-input" type="checkbox" name="gen_pw_az" id="gen_pw_az" checked
+                                oninput="generatePassword();">
                             <label class="form-check-label" for="gen_pw_AZ">a-z</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" name="gen_pw_09" id="gen_pw_num" checked>
+                            <input class="form-check-input" type="checkbox" name="gen_pw_09" id="gen_pw_num" checked
+                                oninput="generatePassword();">
                             <label class="form-check-label" for="gen_pw_num">0-9</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" name="gen_pw_misc" id="gen_pw_misc">
+                            <input class="form-check-input" type="checkbox" name="gen_pw_misc" id="gen_pw_misc" oninput="generatePassword();">
                             <label class="form-check-label" for="gen_pw_misc">!@#$%^&*</label>
                         </div>
                         <div class="form-row">
