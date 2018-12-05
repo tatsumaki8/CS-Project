@@ -80,7 +80,7 @@ print <<<TOP1
     </nav>
     <main>
         <div class="container pt-5">
-            <h2 class="text-center"> Search Results For "
+            <h2 class="text-center"> Search Results For " 
 TOP1;
     echo $search;
 
