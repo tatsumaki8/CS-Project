@@ -87,7 +87,7 @@
         </div>
 
         <!--Information-->
-        <div class="container" style="padding-bottom: 100px;">
+        <div class="container">
             <div class="row">
                 <div class="col text-center">
                     <h3 style="font-family: 'Retro Computer';">Free</h3>
@@ -148,6 +148,8 @@
             <div class="row">
                 <div class="col">&nbsp;</div>
             </div>
+
+            <!--Password Generator-->
             <h2 class="text-center" style="font-family: 'Retro Computer';">Password Generator</h2>
             <div class="row mb-3">
                 <div class="col-2"></div>
@@ -237,7 +239,8 @@
                                 <img src="./rsc/robot.png" class="img-fluid" width="150" alt="Robot Avatar">
                             </div>
                         </div>
-                        <form id="signup" action="" method="POST" onsubmit="return validate();">
+                        <form id="signup" action="signup.php" method="POST" onsubmit="return validate();">
+                            <div class="text-danger font-italic" id="signup-response"></div>
                             <div class="form-group">
                                 <label><b>Email</b></label>
                                 <input type="email" class="form-control" placeholder="Enter Email" name="email" id="email"
@@ -245,7 +248,7 @@
                             </div>
                             <div class="form-group">
                                 <label><b>Username</b></label>
-                                <input type="text" class="form-control" placeholder="Enter Username" name="userName"
+                                <input type="text" class="form-control" placeholder="Enter Username" name="username"
                                     required>
                             </div>
                             <div class="form-group">
