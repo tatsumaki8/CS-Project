@@ -1,8 +1,3 @@
-<?php
-if (isset($_POST["help"])){
-	header("Location: help.php");
-}
-print <<<TOP
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,9 +33,7 @@ print <<<TOP
         }
     </style>
 </head>
-TOP;
 
-print <<<SIDEBAR
 <div class="nav-side-menu">
     <div class="brand bg-success"><img src="./rsc/LockBox_Logo.png" alt="Logo" style="width: 180px"></div>
 
@@ -48,10 +41,10 @@ print <<<SIDEBAR
     <div class="menu-list">
         <ul id="menu-content" class="menu-content collapse out">
             <li>
-                <form action="items.php" method="post" name="help"><button name="#" class="text-left"><i class="fa fa-user fa-lg"></i>&emsp; All Items </button></form>
+                <a><i class="fa fa-user fa-lg"></i>&emsp; All Items </a>
             </li>
             <li>
-                <form action="items.php" method="post" name="help"><button name="#" class="text-left"><i class="fa fa-user fa-lg"></i>&emsp; Favorite</button></form>
+                <a><i class="fa fa-user fa-lg"></i>&emsp; Favorite</a>
             </li>
             <li><br /></li>
             <li data-toggle="collapse" data-target="#account" class="collapsed">
@@ -59,16 +52,16 @@ print <<<SIDEBAR
             </li>
             <ul class="sub-menu collapse" id="account">
                 <li>
-                    <form action="accountGeneral.php" method="post"><button name="#"><i class="fa fa-user fa-lg"></i> General </button></form>
+                    <a><i class="fa fa-user fa-lg"></i> General </a>
                 </li>
                 <li>
-                    <form action="changeEmail.php" method="post"><button name="#"><i class="fa fa-user fa-lg"></i> Email </button></form>
+                    <a><i class="fa fa-user fa-lg"></i> Email </a>
                 </li>
                 <li>
-                    <form action="changePassword.php" method="post"><button name="#"><i class="fa fa-user fa-lg"></i> Change Password </button></form>
+                    <a><button name="#"><i class="fa fa-user fa-lg"></i> Change Password </a>
                 </li>
                 <li>
-                    <form action="deleteAccount.php" method="post"><button name="#"><i class="fa fa-user fa-lg"></i> Delete Account </button></form>
+                    <a><button name="#"><i class="fa fa-user fa-lg"></i> Delete Account </a>
                 </li>
             </ul>
             <li data-toggle="collapse" data-target="#settings" class="collapsed">
@@ -76,17 +69,17 @@ print <<<SIDEBAR
             </li>
             <ul class="sub-menu collapse" id="settings">
                 <li>
-                    <form action="settingGeneral.php" method="post"><button name="#"><i class="fa fa-user fa-lg"></i> General </button></form>
+                    <a><i class="fa fa-user fa-lg"></i> General </a>
                 </li>
                 <li>
-                    <form action="settingPrivacy.php" method="post"><button name="#"><i class="fa fa-user fa-lg"></i> Privacy </button></form>
+                    <a><i class="fa fa-user fa-lg"></i> Privacy </a>
                 </li>
             </ul>
             <li>
-                <form action="help.php" method="post"><button name="help" class="text-left"><i class="fa fa-user fa-lg"></i>&emsp; Help</button></form>
+                <a href="help.php"><i class="fa fa-user fa-lg"></i>&emsp; Help</a>
             </li>
             <li>
-                <form action="logout.php" method="post"><button name="#" class="text-left"><i class="fa fa-user fa-lg"></i>&emsp; Logout</button></form>
+                <a><i class="fa fa-user fa-lg"></i>&emsp; Logout</a>
             </li>
         </ul>
     </div>
@@ -99,5 +92,9 @@ print <<<SIDEBAR
         <div class="col-2"></div>
     </div>
 </div>
-SIDEBAR;
+
+<?php
+if (isset($_POST["help"])){
+	header("Location: help.php");
+}
 ?>
