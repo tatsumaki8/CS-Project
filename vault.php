@@ -37,7 +37,7 @@
     <div class="nav-side-menu">
         <div class="brand bg-success"><a href="./home.php"><img src="./rsc/LockBox_Logo.png" alt="Logo" style="width: 180px"></a></div>
         <div class="list-group">
-            <a href="./login.php" class="list-group-item bg-dark text-white">Password Vault</a>
+            <a href="./vault.php" class="list-group-item bg-dark text-white">Password Vault</a>
             <a href="#collapse1" class="list-group-item bg-dark text-white" data-toggle="collapse">Account Info</a>
             <div id="collapse1" class="panel-collapse collapse">
                 <a href="#" class="list-group-item bg-secondary text-white">- General</a>
