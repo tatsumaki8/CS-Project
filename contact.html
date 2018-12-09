@@ -58,8 +58,7 @@
         </ul>
         <form id="searchForm" method="post" action="search.php" class="form-inline" style="font-family: 'Retro Computer';">
             <div class="md-form my-0">
-                <input id="searchText" name="searchText" class="form-control mr-sm-2" type="text" placeholder="Search..."
-                    aria-label="Search">
+                <input id="searchText" name="searchText" class="form-control mr-sm-2" type="text" placeholder="Search..." aria-label="Search">
                 <a>
                     <ion-icon name="search" style="text-decoration: none; color: white; font-size: 28px"></ion-icon>
                 </a>
@@ -71,69 +70,27 @@
         <!--Info about Authors-->
         <div class="container">
             <div class="row">
-                <div class="col-2"></div>
-                <div class="col-8 text-center">
+                <div class="col-6 text-center">
                     <br />
-                    <h2> Contact Us </h2>
-                    <p>We want to provide others with an easy way to keep track of passwords. Like many people, we have
-                        accounts for school, loyalty programs, email, banking, and much more. It is not secure to use
-                        only one password, but remembering many
-                        different passwords is hard. As students interested in encryption and security, we have learned
-                        what makes passwords secure as well as how to hash, salt, and encrypt passwords and personal
-                        information using open source applications.
+                    <h2 class="mb-3">Our Motivation</h2>
+                    <p>We are two students at the University of Texas at Austin looking to create an easy to use and convenient password manager. Our society is dependent upon our various accounts across different websites and services. Whether it be accounts
+                        to our favorite social media, bank, gaming, or even cat picture site, it's important to have secure passwords that keep hackers out. With all the different accounts you might have on the internet, managing passwords can be difficult,
+                        and you may even decide to use one common password. This is dangerous and allows a hacker who has stolen your password from your favorite cooking recipes site to now be able to access your bank account. Due to these vulnerabilities,
+                        we felt it important to make it easy for you to make strong passwords that you won't even need to remember. All you have to do is remember one strong master password for our site, and you're ready to generate passwords for other
+                        sites that you can easily lookup and copy and paste!</p>
+                    <br />
+                </div>
+                <div class="col-6 text-center">
+                    <br />
+                    <h2 class="mb-3"> Contact Us </h2>
+                    <p>We want to provide others with an easy way to keep track of passwords. Like many people, we have accounts for school, loyalty programs, email, banking, and much more. It is not secure to use only one password, but remembering many
+                        different passwords is hard. As students interested in encryption and security, we have learned what makes passwords secure as well as how to hash, salt, and encrypt passwords and personal information using open source applications.
                     </p>
 
-                    <b>General Information Email:</b> info@lockbox.com<br />
-                    <b>Support Email:</b> support@lockbox.com<br />
+                    <b>General Information Email:</b><a href="mailto:info@lockbox.com?Subject=General%20Information" target="_top"> info@lockbox.com</a><br />
+                    <b>Support Email:</b><a href="mailto:support@lockbox.com?Subject=Support" target="_top"> support@lockbox.com</a><br />
                     <b>Phone Number:</b> 281-861-4949<br /><br />
                 </div>
-                <div class="col-2"></div>
-            </div>
-
-
-            <h3 class="text-center"> Got a Question? Send Us A Message!</h3>
-            <div class="row">
-                <div class="col"></div>
-                <div class="max-auto">
-                    <div class="row">
-
-                        <!--Message Form-->
-                        <form method="post" id="message">
-                            <div class="form-group row">
-                                <div class="col">
-                                    <label class="control-label text-white"><b>First Name</b></label>
-                                    <input type="text" class="form-control" name="firstName" placeholder="First name"
-                                        required>
-                                </div>
-                                <div class="col">
-                                    <label class="control-label text-white"><b>First Name</b></label>
-                                    <input type="text" class="form-control" name="lastName" placeholder="Last name"
-                                        required>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col">
-                                    <label class="control-label text-white"><b>Email address</b></label>
-                                    <input type="email" class="form-control" name="email" placeholder="name@example.com">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col">
-                                    <label class="control-label text-white"><b>Your Message</b></label>
-                                    <textarea class="form-control" name="textarea" rows="3"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col text-center">
-                                    <button type="submit" class="btn btn-light mb-2">Submit</button>
-                                    <button type="reset" class="btn btn-light mb-2">Clear</button>
-                                </div>
-                            </div>
-                        </form>
-
-                    </div>
-                </div>
-                <div class="col"></div>
             </div>
         </div>
     </main>
@@ -166,7 +123,7 @@
                     <h6 class="text-uppercase font-weight-bold" id="currentDate">
                     </h6>
                     <script>
-                        window.addEventListener("load", function () {
+                        window.addEventListener("load", function() {
                             currentDate();
                         });
                     </script>
