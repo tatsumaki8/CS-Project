@@ -81,11 +81,22 @@ if (empty($connect)) {
 
 $username  = mysqli_real_escape_string($connect, $_POST["username"]);
 $password  = mysqli_real_escape_string($connect, $_POST["password"]);
+if (isset($_POST["remember"])){
+    $remember = $_POST["remember"];
+} else {
+    $remember = "no";
+}
+
 
 $result = mysqli_query($connect, "SELECT * from $table WHERE username='$username' AND pass='$password'");
 
 if (mysqli_num_rows($result) == 1){
     $_SESSION["username"] = $username;
+    if ($remember == 'yes'){
+        setcookie("user", $username, time() + (86400 * 30));
+    } else {
+        setcookie("user", "", time()-3600);
+    }
     header('Location: '.$_SERVER['REQUEST_URI']);
 } else {
     header('Location: login.php');

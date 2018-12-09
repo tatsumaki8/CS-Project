@@ -296,6 +296,29 @@
                             </div>
                         </div>
                         <form id="login" action="./vault.php" method="POST">
+                            <?php
+                            if (isset($_COOKIE["user"])){
+                            $user = $_COOKIE["user"];
+
+                                    print <<<LOGIN
+                            <div class="form-group">
+                                <label><b>Username</b></label>
+                                <input type="text" class="form-control" placeholder="Enter Username" name="username"
+                                    required value="$user">
+                            </div>
+                            <div class="form-group">
+                                <label><b>Password</b></label>
+                                <input type="password" class="form-control" placeholder="Enter Password" name="password"
+                                    required>
+                            </div>
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="remember" name="remember" value="yes" checked>
+                                <label class="form-check-label" for="remember">Remember Username</label>
+                            </div>        
+
+LOGIN;
+                            } else {
+                            print <<<LOGIN2
                             <div class="form-group">
                                 <label><b>Username</b></label>
                                 <input type="text" class="form-control" placeholder="Enter Username" name="username"
@@ -306,6 +329,14 @@
                                 <input type="password" class="form-control" placeholder="Enter Password" name="password"
                                     required>
                             </div>
+                            <div class="form-group form-check">
+
+                                <input type="checkbox" class="form-check-input" id="remember" name="remember" value="yes">
+                                <label class="form-check-label" for="remember">Remember Username</label>
+                            </div>                            
+LOGIN2;
+                            }
+                            ?>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-success">Login</button>
