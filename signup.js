@@ -11,3 +11,8 @@ function validate() {
         return true;
     }
 }
+
+// Enable tooltips
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+})

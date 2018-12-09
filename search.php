@@ -1,6 +1,6 @@
 <?php
-$home = file_get_contents("https://fall-2018.cs.utexas.edu/cs329e-mitra/valex8/project/home.html");
-$homePage = "home.html";
+$home = file_get_contents("https://fall-2018.cs.utexas.edu/cs329e-mitra/valex8/project/home.php");
+$homePage = "home.php";
 $about = file_get_contents("https://fall-2018.cs.utexas.edu/cs329e-mitra/valex8/project/about.html");
 $aboutPage = "about.html";
 $help = file_get_contents("https://fall-2018.cs.utexas.edu/cs329e-mitra/valex8/project/help.html");
@@ -52,7 +52,7 @@ print <<<TOP1
 
     <!--Navbar-->
     <nav class="navbar navbar-expand-sm bg-success navbar-dark">
-        <a class="navbar-brand" href="home.html">
+        <a class="navbar-brand" href="home.php">
             <img src="./rsc/LockBox_Logo.png" alt="Logo" style="width: 200px">
         </a>
         <ul class="navbar-nav mr-auto" style="font-family: 'Retro Computer'; font-size: 18pt">

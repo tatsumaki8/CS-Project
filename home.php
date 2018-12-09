@@ -39,7 +39,7 @@
 
     <!--Navbar-->
     <nav class="navbar navbar-expand-sm bg-success navbar-dark">
-        <a class="navbar-brand" href="home.html">
+        <a class="navbar-brand" href="home.php">
             <img src="./rsc/LockBox_Logo.png" alt="Logo" style="width: 200px">
         </a>
         <ul class="navbar-nav mr-auto" style="font-family: 'Retro Computer'; font-size: 18pt">
@@ -82,7 +82,14 @@
             </div>
             <div style="font-family: 'Retro Computer';">
                 <button type="button" class="btn btn-light btn-lg" data-toggle="modal" data-target="#signupModal">Signup</button>
-                <button type="button" class="btn btn-light btn-lg" data-toggle="modal" data-target="#loginModal">Login</button>
+                <?php
+                session_start();
+                if (isset($_SESSION["username"])){
+                   echo "<a href='vault.php'><button type='button' class='btn btn-light btn-lg'>Login</button></a>"; 
+                } else {
+                    echo "<button type='button' class='btn btn-light btn-lg' data-toggle='modal' data-target='#loginModal'>Login</button>";
+                }
+                ?>
             </div>
         </div>
 
@@ -244,22 +251,22 @@
                             <div class="form-group">
                                 <label><b>Email</b></label>
                                 <input type="email" class="form-control" placeholder="Enter Email" name="email" id="email"
-                                    required>
+                                    required data-toggle="tooltip" data-placement="right" title="Make sure to enter a valid email address.">
                             </div>
                             <div class="form-group">
                                 <label><b>Username</b></label>
                                 <input type="text" class="form-control" placeholder="Enter Username" name="username"
-                                    required>
+                                    required data-toggle="tooltip" data-placement="right" title="Usernames must be between 6 and 30 characters (inclusive).">
                             </div>
                             <div class="form-group">
                                 <label><b>Password</b></label>
                                 <input type="password" class="form-control" placeholder="Enter Password" name="password"
-                                    required>
+                                    required data-toggle="tooltip" data-placement="right" title="Passwords must be between 8 and 30 characters (inclusive). Must have at least 1 uppercase, 1 lowercase, and 1 number character.">
                             </div>
                             <div class="form-group">
                                 <label><b>Repeat Password</b></label>
                                 <input type="password" class="form-control" placeholder="Enter Password Again" name="rpassword"
-                                    required>
+                                    required data-toggle="tooltip" data-placement="right" title="Passwords must match.">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -288,10 +295,33 @@
                                 <img src="./rsc/robot.png" class="img-fluid" width="150" alt="Robot Avatar">
                             </div>
                         </div>
-                        <form id="login" action="" method="POST">
+                        <form id="login" action="./vault.php" method="POST">
+                            <?php
+                            if (isset($_COOKIE["user"])){
+                            $user = $_COOKIE["user"];
+
+                                    print <<<LOGIN
                             <div class="form-group">
                                 <label><b>Username</b></label>
-                                <input type="text" class="form-control" placeholder="Enter Username" name="userName"
+                                <input type="text" class="form-control" placeholder="Enter Username" name="username"
+                                    required value="$user">
+                            </div>
+                            <div class="form-group">
+                                <label><b>Password</b></label>
+                                <input type="password" class="form-control" placeholder="Enter Password" name="password"
+                                    required>
+                            </div>
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="remember" name="remember" value="yes" checked>
+                                <label class="form-check-label" for="remember">Remember Username</label>
+                            </div>        
+
+LOGIN;
+                            } else {
+                            print <<<LOGIN2
+                            <div class="form-group">
+                                <label><b>Username</b></label>
+                                <input type="text" class="form-control" placeholder="Enter Username" name="username"
                                     required>
                             </div>
                             <div class="form-group">
@@ -299,6 +329,14 @@
                                 <input type="password" class="form-control" placeholder="Enter Password" name="password"
                                     required>
                             </div>
+                            <div class="form-group form-check">
+
+                                <input type="checkbox" class="form-check-input" id="remember" name="remember" value="yes">
+                                <label class="form-check-label" for="remember">Remember Username</label>
+                            </div>                            
+LOGIN2;
+                            }
+                            ?>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-success">Login</button>

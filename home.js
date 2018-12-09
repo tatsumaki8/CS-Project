@@ -136,3 +136,8 @@ function copy() {
     }
 
 }
+
+// Enable tooltips
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+})

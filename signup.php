@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LockBox</title>
@@ -32,11 +33,12 @@
         }
     </style>
 </head>
+
 <body>
 
-<!--Navbar-->
-<nav class="navbar navbar-expand-sm bg-success navbar-dark">
-        <a class="navbar-brand" href="home.html">
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-sm bg-success navbar-dark">
+        <a class="navbar-brand" href="home.php">
             <img src="./rsc/LockBox_Logo.png" alt="Logo" style="width: 200px">
         </a>
         <ul class="navbar-nav mr-auto" style="font-family: 'Retro Computer'; font-size: 18pt">
@@ -64,11 +66,11 @@
         </form>
     </nav>
 
-<main>
-<div class="container">
-<div class="row">
+    <main>
+        <div class="container">
+            <div class="row">
 
-<?php
+                <?php
 // Connect to the database
 $host = "fall-2018.cs.utexas.edu";
 $user = "cs329e_mitra_vtruong";
@@ -92,8 +94,8 @@ $error = "";
 // Check to make sure signup info isn't empty
 if (!empty($username) && !empty($email) && !empty($password) && !empty($rpassword)) {
  // Check username
- if (strlen($username) < '4' || strlen($username) > '30') {
-  $error = "Your username must be between 4 and 30 characters (inclusive)";
+ if (strlen($username) < '6' || strlen($username) > '30') {
+  $error = "Your username must be between 6 and 30 characters (inclusive)";
   $valid = false;
  }
  // Check password
@@ -137,7 +139,7 @@ if ($valid) {
    print <<<SUCCESS
     <div class="col text-center mt-3">
         <h3 style="font-family: 'Retro Computer';">Signup Successful! You may now login.</h3>
-        <a href="./home.html"><button type="button" class="btn btn-lg btn-success mt-3">Return to Homepage</button></a>
+        <a href="./home.php"><button type="button" class="btn btn-lg btn-success mt-3">Return to Homepage</button></a>
     </div>
 SUCCESS;
   } else {
@@ -150,24 +152,24 @@ SUCCESS;
         <div class="form-group">
             <label><b>Email</b></label>
             <input type="email" class="form-control" placeholder="Enter Email" name="email" id="email"
-                required>
+                required data-toggle="tooltip" data-placement="right" title="Make sure to enter a valid email address.">
         </div>
         <div class="form-group">
             <label><b>Username</b></label>
             <input type="text" class="form-control" placeholder="Enter Username" name="username"
-                required>
+                required data-toggle="tooltip" data-placement="right" title="Usernames must be between 6 and 30 characters (inclusive).">
         </div>
         <div class="form-group">
             <label><b>Password</b></label>
             <input type="password" class="form-control" placeholder="Enter Password" name="password"
-                required>
+                required data-toggle="tooltip" data-placement="right" title="Passwords must be between 8 and 30 characters (inclusive). Must have at least 1 uppercase, 1 lowercase, and 1 number character.">
         </div>
         <div class="form-group">
             <label><b>Repeat Password</b></label>
             <input type="password" class="form-control" placeholder="Enter Password Again" name="rpassword"
-                required>
+                required data-toggle="tooltip" data-placement="right" title="Passwords must match.">
         </div>
-        <a href="./home.html"><button type="button" class="btn btn-secondary">Cancel</button></a>
+        <a href="./home.php"><button type="button" class="btn btn-secondary">Cancel</button></a>
         <button type="submit" class="btn btn-success">Complete Signup</button>
     </form>
     </div>
@@ -183,24 +185,24 @@ FAIL;
         <div class="form-group">
             <label><b>Email</b></label>
             <input type="email" class="form-control" placeholder="Enter Email" name="email" id="email"
-                required>
+                required data-toggle="tooltip" data-placement="right" title="Make sure to enter a valid email address.">
         </div>
         <div class="form-group">
             <label><b>Username</b></label>
             <input type="text" class="form-control" placeholder="Enter Username" name="username"
-                required>
+                required data-toggle="tooltip" data-placement="right" title="Usernames must be between 6 and 30 characters (inclusive).">
         </div>
         <div class="form-group">
             <label><b>Password</b></label>
             <input type="password" class="form-control" placeholder="Enter Password" name="password"
-                required>
+                required data-toggle="tooltip" data-placement="right" title="Passwords must be between 8 and 30 characters (inclusive). Must have at least 1 uppercase, 1 lowercase, and 1 number character.">
         </div>
         <div class="form-group">
             <label><b>Repeat Password</b></label>
             <input type="password" class="form-control" placeholder="Enter Password Again" name="rpassword"
-                required>
+                required data-toggle="tooltip" data-placement="right" title="Passwords must match.">
         </div>
-        <a href="./home.html"><button type="button" class="btn btn-secondary">Cancel</button></a>
+        <a href="./home.php"><button type="button" class="btn btn-secondary">Cancel</button></a>
         <button type="submit" class="btn btn-success">Complete Signup</button>
     </form>
     </div>
@@ -216,24 +218,24 @@ FAIL;
          <div class="form-group">
              <label><b>Email</b></label>
              <input type="email" class="form-control" placeholder="Enter Email" name="email" id="email"
-                 required>
+                 required data-toggle="tooltip" data-placement="right" title="Make sure to enter a valid email address.">
          </div>
          <div class="form-group">
              <label><b>Username</b></label>
              <input type="text" class="form-control" placeholder="Enter Username" name="username"
-                 required>
+                 required data-toggle="tooltip" data-placement="right" title="Usernames must be between 6 and 30 characters (inclusive).">
          </div>
          <div class="form-group">
              <label><b>Password</b></label>
              <input type="password" class="form-control" placeholder="Enter Password" name="password"
-                 required>
+                 required data-toggle="tooltip" data-placement="right" title="Passwords must be between 8 and 30 characters (inclusive). Must have at least 1 uppercase, 1 lowercase, and 1 number character.">
          </div>
          <div class="form-group">
              <label><b>Repeat Password</b></label>
              <input type="password" class="form-control" placeholder="Enter Password Again" name="rpassword"
-                 required>
+                 required data-toggle="tooltip" data-placement="right" title="Passwords must match.">
          </div>
-         <a href="./home.html"><button type="button" class="btn btn-secondary">Cancel</button></a>
+         <a href="./home.php"><button type="button" class="btn btn-secondary">Cancel</button></a>
          <button type="submit" class="btn btn-success">Complete Signup</button>
      </form>
      </div>
@@ -241,12 +243,12 @@ FAIL;
 }
 
 ?>
-</div>
-</div>
-</main>
+            </div>
+        </div>
+    </main>
 
-<!--Footer-->
-<footer class="footer bg-dark text-white mt-5">
+    <!--Footer-->
+    <footer class="footer bg-dark text-white mt-5">
         <div class="container">
             <div class="row text-center d-flex justify-content-center pt-5 mb-3">
                 <div class="col-md-3 mb-3">
@@ -283,4 +285,5 @@ FAIL;
     </footer>
 
 </body>
+
 </html>
