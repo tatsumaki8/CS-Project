@@ -73,16 +73,47 @@
                     <h3 class="mt-3" style="font-family: 'Retro Computer';">Login</h3>
                     <div class="text-danger font-italic mt-3" id="login-response">Username or password is incorrect.</div>
                     <form id="login" action="./vault.php" method="POST">
-                        <div class="form-group">
-                            <label><b>Username</b></label>
-                            <input type="text" class="form-control" placeholder="Enter Username" name="username"
-                                required>
-                        </div>
-                        <div class="form-group">
-                            <label><b>Password</b></label>
-                            <input type="password" class="form-control" placeholder="Enter Password" name="password"
-                                required>
-                        </div>
+                        <?php
+                            if (isset($_COOKIE["user"])){
+                            $user = $_COOKIE["user"];
+
+                                    print <<<LOGIN
+                            <div class="form-group">
+                                <label><b>Username</b></label>
+                                <input type="text" class="form-control" placeholder="Enter Username" name="username"
+                                    required value="$user">
+                            </div>
+                            <div class="form-group">
+                                <label><b>Password</b></label>
+                                <input type="password" class="form-control" placeholder="Enter Password" name="password"
+                                    required>
+                            </div>
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="remember" name="remember" value="yes" checked>
+                                <label class="form-check-label" for="remember">Remember Username</label>
+                            </div>        
+
+LOGIN;
+                            } else {
+                            print <<<LOGIN2
+                            <div class="form-group">
+                                <label><b>Username</b></label>
+                                <input type="text" class="form-control" placeholder="Enter Username" name="username"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label><b>Password</b></label>
+                                <input type="password" class="form-control" placeholder="Enter Password" name="password"
+                                    required>
+                            </div>
+                            <div class="form-group form-check">
+
+                                <input type="checkbox" class="form-check-input" id="remember" name="remember" value="yes">
+                                <label class="form-check-label" for="remember">Remember Username</label>
+                            </div>                            
+LOGIN2;
+                            }
+                            ?>
                         <a href="./home.php"><button type="button" class="btn btn-secondary">Cancel</button></a>
                         <button type="submit" class="btn btn-success">Login</button>
                     </form>
