@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="sticky-footer.css">
     <script src="./home.js"></script>
+    <script src="./date.js"></script>
 
     <style>
         @font-face {
@@ -38,7 +39,7 @@
 
     <!--Navbar-->
     <nav class="navbar navbar-expand-sm bg-success navbar-dark">
-        <a class="navbar-brand" href="home.html">
+        <a class="navbar-brand" href="home.php">
             <img src="./rsc/LockBox_Logo.png" alt="Logo" style="width: 200px">
         </a>
         <ul class="navbar-nav mr-auto" style="font-family: 'Retro Computer'; font-size: 18pt">
@@ -81,12 +82,19 @@
             </div>
             <div style="font-family: 'Retro Computer';">
                 <button type="button" class="btn btn-light btn-lg" data-toggle="modal" data-target="#signupModal">Signup</button>
-                <button type="button" class="btn btn-light btn-lg" data-toggle="modal" data-target="#loginModal">Login</button>
+                <?php
+                session_start();
+                if (isset($_SESSION["username"])){
+                   echo "<a href='vault.php'><button type='button' class='btn btn-light btn-lg'>Login</button></a>"; 
+                } else {
+                    echo "<button type='button' class='btn btn-light btn-lg' data-toggle='modal' data-target='#loginModal'>Login</button>";
+                }
+                ?>
             </div>
         </div>
 
         <!--Information-->
-        <div class="container" style="padding-bottom: 100px;">
+        <div class="container">
             <div class="row">
                 <div class="col text-center">
                     <h3 style="font-family: 'Retro Computer';">Free</h3>
@@ -147,6 +155,8 @@
             <div class="row">
                 <div class="col">&nbsp;</div>
             </div>
+
+            <!--Password Generator-->
             <h2 class="text-center" style="font-family: 'Retro Computer';">Password Generator</h2>
             <div class="row mb-3">
                 <div class="col-2"></div>
@@ -164,19 +174,22 @@
                     <div id="copied" class="font-italic text-muted"></div><br />
                     <div class="form-group">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" name="gen_pw_AZ" id="gen_pw_AZ" checked>
+                            <input class="form-check-input" type="checkbox" name="gen_pw_AZ" id="gen_pw_AZ" checked
+                                oninput="generatePassword();">
                             <label class="form-check-label" for="gen_pw_AZ">A-Z</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" name="gen_pw_az" id="gen_pw_az" checked>
+                            <input class="form-check-input" type="checkbox" name="gen_pw_az" id="gen_pw_az" checked
+                                oninput="generatePassword();">
                             <label class="form-check-label" for="gen_pw_AZ">a-z</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" name="gen_pw_09" id="gen_pw_num" checked>
+                            <input class="form-check-input" type="checkbox" name="gen_pw_09" id="gen_pw_num" checked
+                                oninput="generatePassword();">
                             <label class="form-check-label" for="gen_pw_num">0-9</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" name="gen_pw_misc" id="gen_pw_misc">
+                            <input class="form-check-input" type="checkbox" name="gen_pw_misc" id="gen_pw_misc" oninput="generatePassword();">
                             <label class="form-check-label" for="gen_pw_misc">!@#$%^&*</label>
                         </div>
                         <div class="form-row">
@@ -233,26 +246,27 @@
                                 <img src="./rsc/robot.png" class="img-fluid" width="150" alt="Robot Avatar">
                             </div>
                         </div>
-                        <form id="signup" action="" method="POST" onsubmit="return validate();">
+                        <form id="signup" action="signup.php" method="POST" onsubmit="return validate();">
+                            <div class="text-danger font-italic" id="signup-response"></div>
                             <div class="form-group">
                                 <label><b>Email</b></label>
                                 <input type="email" class="form-control" placeholder="Enter Email" name="email" id="email"
-                                    required>
+                                    required data-toggle="tooltip" data-placement="right" title="Make sure to enter a valid email address.">
                             </div>
                             <div class="form-group">
                                 <label><b>Username</b></label>
-                                <input type="text" class="form-control" placeholder="Enter Username" name="userName"
-                                    required>
+                                <input type="text" class="form-control" placeholder="Enter Username" name="username"
+                                    required data-toggle="tooltip" data-placement="right" title="Usernames must be between 6 and 30 characters (inclusive).">
                             </div>
                             <div class="form-group">
                                 <label><b>Password</b></label>
                                 <input type="password" class="form-control" placeholder="Enter Password" name="password"
-                                    required>
+                                    required data-toggle="tooltip" data-placement="right" title="Passwords must be between 8 and 30 characters (inclusive). Must have at least 1 uppercase, 1 lowercase, and 1 number character.">
                             </div>
                             <div class="form-group">
                                 <label><b>Repeat Password</b></label>
                                 <input type="password" class="form-control" placeholder="Enter Password Again" name="rpassword"
-                                    required>
+                                    required data-toggle="tooltip" data-placement="right" title="Passwords must match.">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -281,10 +295,10 @@
                                 <img src="./rsc/robot.png" class="img-fluid" width="150" alt="Robot Avatar">
                             </div>
                         </div>
-                        <form id="login" action="" method="POST">
+                        <form id="login" action="./vault.php" method="POST">
                             <div class="form-group">
                                 <label><b>Username</b></label>
-                                <input type="text" class="form-control" placeholder="Enter Username" name="userName"
+                                <input type="text" class="form-control" placeholder="Enter Username" name="username"
                                     required>
                             </div>
                             <div class="form-group">
@@ -329,9 +343,13 @@
                     </h6>
                 </div>
                 <div class="col-md-3 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                        November 10, 2018
+                    <h6 class="text-uppercase font-weight-bold" id="currentDate">
                     </h6>
+                    <script>
+                        window.addEventListener("load", function () {
+                            currentDate();
+                        });
+                    </script>
                 </div>
             </div>
         </div>

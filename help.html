@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="help.css">
     <link rel="stylesheet" href="sticky-footer.css">
     <script src="./home.js"></script>
+    <script src="./date.js"></script>
 
     <style>
         @font-face {
@@ -38,7 +39,7 @@
 
     <!--Navbar-->
     <nav class="navbar navbar-expand-sm bg-success navbar-dark">
-        <a class="navbar-brand" href="home.html">
+        <a class="navbar-brand" href="home.php">
             <img src="./rsc/LockBox_Logo.png" alt="Logo" style="width: 200px">
         </a>
         <ul class="navbar-nav mr-auto" style="font-family: 'Retro Computer'; font-size: 18pt">
@@ -57,7 +58,8 @@
         </ul>
         <form id="searchForm" method="post" action="search.php" class="form-inline" style="font-family: 'Retro Computer';">
             <div class="md-form my-0">
-                <input id="searchText" name="searchText" class="form-control mr-sm-2" type="text" placeholder="Search..." aria-label="Search">
+                <input id="searchText" name="searchText" class="form-control mr-sm-2" type="text" placeholder="Search..."
+                    aria-label="Search">
                 <a>
                     <ion-icon name="search" style="text-decoration: none; color: white; font-size: 28px"></ion-icon>
                 </a>
@@ -89,25 +91,39 @@
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body">
                             <p>
-                                <span class="question">How to change my email?</span><br /> Go to <b>Settings</b> in the top navigation bar, and click <b>Change Email</b>. Enter your current email, new email, and password. Click <b>Continue</b>, and you
-                                will be asked to enter the verification code that was sent to your new email. Enter the code, and click <b>Change Email</b>. You will automatically be logged out of LockBox.
+                                <span class="question">How to change my email?</span><br /> Go to <b>Settings</b> in
+                                the top navigation bar, and click <b>Change Email</b>. Enter your current email, new
+                                email, and password. Click <b>Continue</b>, and you
+                                will be asked to enter the verification code that was sent to your new email. Enter the
+                                code, and click <b>Change Email</b>. You will automatically be logged out of LockBox.
                             </p>
                             <hr />
                             <p>
-                                <span class="question">How to change my password?</span><br /> Go to <b>Settings</b> in the top navigation bar, and click <b>Change Password</b>. Enter your current password and new password, and repeate the new password
-                                to confirm. Click <b>Change Password</b>. You will automatically be logged out of LockBox.
+                                <span class="question">How to change my password?</span><br /> Go to <b>Settings</b> in
+                                the top navigation bar, and click <b>Change Password</b>. Enter your current password
+                                and new password, and repeate the new password
+                                to confirm. Click <b>Change Password</b>. You will automatically be logged out of
+                                LockBox.
 
                             </p>
                             <hr />
                             <p>
-                                <span class="question" id="forgotpw">I forgot my password.</span><br /> Because of how LockBox works, there is no way to reset your password if you forget it. All your information is encrypted securly using your password,
-                                so you cannot access your infromation without the password. Due to our encryption, we are also unable to retrieve your password for you. If you have forgotten your password, the only option is to delete the account and
+                                <span class="question" id="forgotpw">I forgot my password.</span><br /> Because of how
+                                LockBox works, there is no way to reset your password if you forget it. All your
+                                information is encrypted securly using your password,
+                                so you cannot access your infromation without the password. Due to our encryption, we
+                                are also unable to retrieve your password for you. If you have forgotten your password,
+                                the only option is to delete the account and
                                 start over, which will delete all your information and data.
                             </p>
                             <hr />
                             <p>
-                                <span class="question">How to delete my account?</span><br /> Go to <b>Settings</b> in the top navigation bar, and click <b>Delete Account</b>. Enter your current password, and click
-                                <b>Continue</b>. There will be a pop up box warning you that deleting your account is permanent and asking if you are sure that you want to continue. Click <b>Delete Account</b>, and you will automatically be logged out
+                                <span class="question">How to delete my account?</span><br /> Go to <b>Settings</b> in
+                                the top navigation bar, and click <b>Delete Account</b>. Enter your current password,
+                                and click
+                                <b>Continue</b>. There will be a pop up box warning you that deleting your account is
+                                permanent and asking if you are sure that you want to continue. Click <b>Delete Account</b>,
+                                and you will automatically be logged out
                                 of LockBox.
                             </p>
                         </div>
@@ -123,24 +139,37 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                         <div class="card-body">
                             <p>
-                                <span class="question">What kind of information can I store with LockBox?</span><br /> As a password manager, you can store passwords for all your emails, bank accounts, loyalty programs, subscriptions, and more with LockBox.
-                                We use trusted encryption as well as hashing and salting to protect your password information.
+                                <span class="question">What kind of information can I store with LockBox?</span><br />
+                                As a password manager, you can store passwords for all your emails, bank accounts,
+                                loyalty programs, subscriptions, and more with LockBox.
+                                We use trusted encryption as well as hashing and salting to protect your password
+                                information.
 
                             </p>
                             <hr />
                             <p>
                                 <span class="question">Can the LockBox team see my passwords?</span><br /></p>
-                            No! All your passwords are encrypted and/or hashed and salted, so nobody can see, red, or retrieve your real data. We only store encrypted and hashed data, so we can never see the data you store in our password manager.
+                            No! All your passwords are encrypted and/or hashed and salted, so nobody can see, red, or
+                            retrieve your real data. We only store encrypted and hashed data, so we can never see the
+                            data you store in our password manager.
                             <hr />
                             <p>
-                                <span class="question">How does LockBox store my passwords?</span><br /> LockBox does not store your passwords. We only store encrypted version of your password, and only you have access to your stored passwords. Lockbox
-                                uses hashing and salting before your data and information is stored with us. Hashes are compared every time when you log in.
+                                <span class="question">How does LockBox store my passwords?</span><br /> LockBox does
+                                not store your passwords. We only store encrypted version of your password, and only
+                                you have access to your stored passwords. Lockbox
+                                uses hashing and salting before your data and information is stored with us. Hashes are
+                                compared every time when you log in.
                             </p>
                             <hr />
                             <p>
-                                <span class="question">What kind of encryption does LockBox use?</span><br /> LockBox uses OpenSSL encyrption to secure your data and information. OpenSSL is a software library for applications that secure communications
-                                over computer networks to protect against eavesdropping, and it is widely used for a majority of websites. It is an open-source implementation of the SSL and TLS protocols and implements basic cryptographic functions. OpenSSL
-                                is double licensed under both the OpenSSL Licenses, which is Apacahe License 1.0, and SSLeay License.
+                                <span class="question">What kind of encryption does LockBox use?</span><br /> LockBox
+                                uses OpenSSL encyrption to secure your data and information. OpenSSL is a software
+                                library for applications that secure communications
+                                over computer networks to protect against eavesdropping, and it is widely used for a
+                                majority of websites. It is an open-source implementation of the SSL and TLS protocols
+                                and implements basic cryptographic functions. OpenSSL
+                                is double licensed under both the OpenSSL Licenses, which is Apacahe License 1.0, and
+                                SSLeay License.
                             </p>
                         </div>
                     </div>
@@ -172,9 +201,9 @@
             </div>
             <div class="row">
                 <div class="col"></div>
-                <div class="col-8 text-center">
-                    <br />
-                    <p> If your question is not listed here, send us an email or message, and we will get back to you as soon as possible. Our contact information can be found on the Contact Us page.</p>
+                <div class="col-8 text-center mt-3">
+                    <p> If your question is not listed here, send us an email or message, and we will get back to you
+                        as soon as possible. Our contact information can be found on the Contact Us page.</p>
                 </div>
                 <div class="col"></div>
             </div>
@@ -206,9 +235,13 @@
                     </h6>
                 </div>
                 <div class="col-md-3 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                        November 10, 2018
+                    <h6 class="text-uppercase font-weight-bold" id="currentDate">
                     </h6>
+                    <script>
+                        window.addEventListener("load", function () {
+                            currentDate();
+                        });
+                    </script>
                 </div>
             </div>
         </div>

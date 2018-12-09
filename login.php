@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Contact</title>
+    <title>LockBox</title>
     <link rel="shortcut icon" href="./rsc/favicon.png" type="image/x-icon">
 
     <!-- Latest compiled and minified CSS -->
@@ -16,15 +16,13 @@
 
     <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
     <script src="https://unpkg.com/ionicons@4.4.6/dist/ionicons.js"></script>
 
-    <link rel="stylesheet" href="contact.css">
     <link rel="stylesheet" href="sticky-footer.css">
-    <script src="./home.js"></script>
     <script src="./date.js"></script>
 
     <style>
@@ -52,7 +50,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="help.html">Help</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="contact.html">Contact Us</a>
             </li>
         </ul>
@@ -68,74 +66,30 @@
     </nav>
 
     <main>
-        <!--Info about Authors-->
+        <!--Content-->
         <div class="container">
             <div class="row">
-                <div class="col-2"></div>
-                <div class="col-8 text-center">
-                    <br />
-                    <h2> Contact Us </h2>
-                    <p>We want to provide others with an easy way to keep track of passwords. Like many people, we have
-                        accounts for school, loyalty programs, email, banking, and much more. It is not secure to use
-                        only one password, but remembering many
-                        different passwords is hard. As students interested in encryption and security, we have learned
-                        what makes passwords secure as well as how to hash, salt, and encrypt passwords and personal
-                        information using open source applications.
-                    </p>
-
-                    <b>General Information Email:</b> info@lockbox.com<br />
-                    <b>Support Email:</b> support@lockbox.com<br />
-                    <b>Phone Number:</b> 281-861-4949<br /><br />
+                <div class="col">
+                    <h3 class="mt-3" style="font-family: 'Retro Computer';">Login</h3>
+                    <div class="text-danger font-italic mt-3" id="login-response">Username or password is incorrect.</div>
+                    <form id="login" action="./vault.php" method="POST">
+                        <div class="form-group">
+                            <label><b>Username</b></label>
+                            <input type="text" class="form-control" placeholder="Enter Username" name="username"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label><b>Password</b></label>
+                            <input type="password" class="form-control" placeholder="Enter Password" name="password"
+                                required>
+                        </div>
+                        <a href="./home.php"><button type="button" class="btn btn-secondary">Cancel</button></a>
+                        <button type="submit" class="btn btn-success">Login</button>
+                    </form>
                 </div>
-                <div class="col-2"></div>
-            </div>
-
-
-            <h3 class="text-center"> Got a Question? Send Us A Message!</h3>
-            <div class="row">
-                <div class="col"></div>
-                <div class="max-auto">
-                    <div class="row">
-
-                        <!--Message Form-->
-                        <form method="post" id="message">
-                            <div class="form-group row">
-                                <div class="col">
-                                    <label class="control-label text-white"><b>First Name</b></label>
-                                    <input type="text" class="form-control" name="firstName" placeholder="First name"
-                                        required>
-                                </div>
-                                <div class="col">
-                                    <label class="control-label text-white"><b>First Name</b></label>
-                                    <input type="text" class="form-control" name="lastName" placeholder="Last name"
-                                        required>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col">
-                                    <label class="control-label text-white"><b>Email address</b></label>
-                                    <input type="email" class="form-control" name="email" placeholder="name@example.com">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col">
-                                    <label class="control-label text-white"><b>Your Message</b></label>
-                                    <textarea class="form-control" name="textarea" rows="3"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col text-center">
-                                    <button type="submit" class="btn btn-light mb-2">Submit</button>
-                                    <button type="reset" class="btn btn-light mb-2">Clear</button>
-                                </div>
-                            </div>
-                        </form>
-
-                    </div>
-                </div>
-                <div class="col"></div>
             </div>
         </div>
+
     </main>
 
     <!--Footer-->
@@ -174,7 +128,6 @@
             </div>
         </div>
     </footer>
-
 </body>
 
 </html>

@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="donate.css">
     <link rel="stylesheet" href="sticky-footer.css">
     <script src="./home.js"></script>
+    <script src="./date.js"></script>
 
     <style>
         @font-face {
@@ -38,7 +39,7 @@
 
     <!--Navbar-->
     <nav class="navbar navbar-expand-sm bg-success navbar-dark">
-        <a class="navbar-brand" href="home.html">
+        <a class="navbar-brand" href="home.php">
             <img src="./rsc/LockBox_Logo.png" alt="Logo" style="width: 200px">
         </a>
         <ul class="navbar-nav mr-auto" style="font-family: 'Retro Computer'; font-size: 18pt">
@@ -57,7 +58,8 @@
         </ul>
         <form id="searchForm" method="post" action="search.php" class="form-inline" style="font-family: 'Retro Computer';">
             <div class="md-form my-0">
-                <input id="searchText" name="searchText" class="form-control mr-sm-2" type="text" placeholder="Search..." aria-label="Search">
+                <input id="searchText" name="searchText" class="form-control mr-sm-2" type="text" placeholder="Search..."
+                    aria-label="Search">
                 <a>
                     <ion-icon name="search" style="text-decoration: none; color: white; font-size: 28px"></ion-icon>
                 </a>
@@ -76,11 +78,16 @@
             <div class="row">
                 <div class="col-2"></div>
                 <div class="col-8 text-center pt-3">
-                    <p> LockBox is a password manager that is completely free of charge for users. We strive to provide the best software and features for our users, but maintaining and developing a high quality password manager costs time and money. If you
-                        are enjoying LockBox, then consider making a donation to show your appreciation and to support its development!
+                    <p> LockBox is a password manager that is completely free of charge for users. We strive to provide
+                        the best software and features for our users, but maintaining and developing a high quality
+                        password manager costs time and money. If you
+                        are enjoying LockBox, then consider making a donation to show your appreciation and to support
+                        its development!
                     </p>
                     <p>
-                        Your donation will be used for continuous maintenance and development of Lockbox in order to securely store your information. We accept donations with PayPal and credit cards (VISA, Mastercard, American Express, Discover)
+                        Your donation will be used for continuous maintenance and development of Lockbox in order to
+                        securely store your information. We accept donations with PayPal and credit cards (VISA,
+                        Mastercard, American Express, Discover)
                     </p>
                     <button type="button" class="btn btn-lg mt-3 text-white">Donate Now</button>
                 </div>
@@ -116,9 +123,13 @@
                     </h6>
                 </div>
                 <div class="col-md-3 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                        November 10, 2018
+                    <h6 class="text-uppercase font-weight-bold" id="currentDate">
                     </h6>
+                    <script>
+                        window.addEventListener("load", function () {
+                            currentDate();
+                        });
+                    </script>
                 </div>
             </div>
         </div>
