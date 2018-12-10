@@ -45,7 +45,7 @@
                 <a href="#" class="list-group-item bg-secondary text-white">- Change Password</a>
             </div>
             <a href="./help.php" class="list-group-item bg-dark text-white">Help</a>
-            <a href="#" class="list-group-item bg-dark text-white font-weight-bold">Logout</a>
+            <a href="./logout.php" class="list-group-item bg-dark text-white font-weight-bold">Logout</a>
             <a href="#" class="list-group-item bg-dark text-danger font-weight-bold">Delete Account</a>
         </div>
     </div>
@@ -53,13 +53,15 @@
     <!--Content-->
     <div class="container">
         <div class="row">
-            <div class="col text-center">
+            <div class="col-2"></div>
+            <div class="col-10 text-center">
                 <h2 class="mt-3"> Frequently Asked Questions </h2>
             </div>
         </div>
 
         <div class="row">
-            <div class="col">
+            <div class="col-2"></div>
+            <div class="col-10">
                 <div id="accordion">
                     <div class="card">
                         <div class="card-header" id="headingOne">
@@ -205,7 +207,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col text-center mt-3">
+            <div class="col-2"></div>
+            <div class="col-10 text-center mt-3">
                 <p> If your question is not listed here, send us an email or message, and we will get back to you
                     as soon as possible. Our contact information can be found on the Contact Us page.</p>
             </div>
