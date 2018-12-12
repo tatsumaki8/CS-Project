@@ -47,49 +47,6 @@ session_start();
 if (isset($_SESSION["username"])){
     $login = $_SESSION["username"];
     echo "<h1 class='text-center'> Welcome back $login </h1><br />";
-
-print <<<PAGE
-<div class="row">
-    <div class="col-4"></div>
-    <div class="col-4">
-        <a href='#collapseOne' class='list-group-item bg-secondary text-white text-center' data-toggle='collapse'>Add New Site Login</a>
-        <div id='collapseOne' class='panel-collapse collapse'>
-            <br />
-            <form method="post" action="vault.php">
-                <table class="table-responsive text-center">
-                    <tr>
-                        <td>Name:</td>
-                        <td><input type="text" name="name" required></td>
-                    </tr>
-                    <tr>
-                        <td>Website:</td>
-                        <td><input type="text" name="website" required ></td>
-                    </tr>
-                    <tr>
-                        <td>Username:</td>
-                        <td><input type="text" name="username" required ></td>
-                    </tr>
-                        <tr>
-                        <td>Password:</td>
-                        <td><input type="text" name="password" required></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" id="center">
-                            <br />
-                            <input type="submit" value="Enter" name="add" class="button" onclick="checkItem();"/>&nbsp;
-                            <input type="reset" value="Reset" class="button" />
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-    </div>
-    <div class="col-4"></div>
-</div>
-<br />
-<div class="row">
-    <div class="col-lg">
-PAGE;
 } else {
     checkLogin();
 }
@@ -100,9 +57,55 @@ if (isset($_POST["add"])){
     delete();
 } elseif (isset($_POST["edit"])){
     edit();
+} elseif (isset($_POST["editInfo"])){
+    editLogin();
 } elseif (isset($_POST["change"])){
     change();
 } else {
+
+    print <<<PAGE
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <a href='#collapseOne' class='list-group-item bg-secondary text-white text-center' data-toggle='collapse'>Add New Site Login</a>
+            <div id='collapseOne' class='panel-collapse collapse'>
+                <br />
+                <form method="post" action="vault.php">
+                    <table class="table-responsive text-center">
+                        <tr>
+                            <td>Name:</td>
+                            <td><input type="text" name="name" required></td>
+                        </tr>
+                        <tr>
+                            <td>Website:</td>
+                            <td><input type="text" name="website" required ></td>
+                        </tr>
+                        <tr>
+                            <td>Username:</td>
+                            <td><input type="text" name="username" required ></td>
+                        </tr>
+                            <tr>
+                            <td>Password:</td>
+                            <td><input type="text" name="password" required></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" id="center">
+                                <br />
+                                <input type="submit" value="Enter" name="add" class="button" onclick="checkItem();"/>&nbsp;
+                                <input type="reset" value="Reset" class="button" />
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-lg">
+PAGE;
+
     $host = "fall-2018.cs.utexas.edu";
     $user = "cs329e_mitra_valex8";
     $pwd = "denote-naval9Deep";
@@ -139,7 +142,7 @@ if (isset($_POST["add"])){
                 <td width='800'><button type='button' onclick='showPassword();' id='showPassword'> Show Password </button></td>
                 <td>
                     <form method='post' action='vault.php'>
-                        <input type='hidden' name='tool' value='<?php echo $row[2]; ?>' />
+                        <input type='hidden' name='$IDarray[$count]' value='<?php echo $row[2]; ?>' />
                         <button name='edit' style='background: transparent; border: none'><ion-icon name='create' style='text-decoration: none; color: white; font-size: 28px'></ion-icon></button>
                     </form>
                 </td>
@@ -254,7 +257,6 @@ function delete(){
     $login = $_SESSION["username"];
     $result = mysqli_query($connect, "SELECT ID from $table WHERE Login='$login'");
 
-    $arrayNum = 0;
     while ($row = $result->fetch_row())
     {
         $count = 0;
@@ -267,11 +269,154 @@ function delete(){
                 $count++;
             }
         }
-        $arrayNum ++;
     }
     $stmt = mysqli_query($connect, "DELETE FROM $table WHERE ID = '$id'");
+    $result->free();
     mysqli_close($connect);
     header("Location: vault.php");
+}
+
+$idEdit="";
+function edit(){
+    $host = "fall-2018.cs.utexas.edu";
+    $user = "cs329e_mitra_valex8";
+    $pwd = "denote-naval9Deep";
+    $dbs = "cs329e_mitra_valex8";
+    $port = "3306";
+
+    $connect = mysqli_connect ($host, $user, $pwd, $dbs, $port);
+
+    if (empty($connect))
+    {
+    die("mysqli_connect failed: " . mysqli_connect_error());
+    }
+    $table = "Vault";
+    $login = $_SESSION["username"];
+    $result = mysqli_query($connect, "SELECT * from $table WHERE Login='$login'");
+    while ($row = $result->fetch_row())
+    {
+        $count = 0;
+        while ($count <= mysqli_num_rows(mysqli_query($connect, "SELECT * from $table"))){
+            extract($_POST);
+            if (isset($_POST[$count])){
+                global $idEdit;
+                $idEdit = $count;
+                editLogin($idEdit);
+                break;
+            } else {
+                $count++;
+            }
+        }
+    }
+
+    $stmt = mysqli_query($connect, "SELECT * from $table WHERE ID = '$idEdit'");
+    while ($row = $stmt->fetch_row())
+    {
+        print
+        "<div class='row'>
+        <div class='col-2'></div>
+        <div class='col-4'>
+            <a href='#collapseOld' class='list-group-item bg-secondary text-white text-center' data-toggle='collapse'>Old Site Login</a>
+            <div id='collapseOld' class='panel-collapse collapse show'>
+                <br />
+                <form method='post' action='vault.php'>
+                    <table class='table-responsive text-center'>
+                        <tr>
+                            <td><b>Name:</b></td>
+                            <td><input class= 'delete' type='hidden' name='edit$id'/>$row[2]</td>
+                        </tr>
+                        <tr>
+                            <td><b>Website:</b></td>
+                            <td>$row[3]</td>
+                        </tr>
+                        <tr>
+                            <td><b>Username:</b></td>
+                            <td>$row[4]</td>
+                        </tr>
+                            <tr>
+                            <td><b>Password:</b></td>
+                            <td>$row[5]</td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div class='col-4'>
+            <a href='#collapseNew' class='list-group-item bg-secondary text-white text-center' data-toggle='collapse'>Change Site Login</a>
+            <div id='collapseNew' class='panel-collapse collapse show'>
+                <br />
+                <form method='post' action='vault.php'>
+                    <table class='table-responsive text-center'>
+                        <input type='hidden' name=$idEdit>
+                        <tr>
+                            <td><b>Name:</b></td>
+                            <td><input type='text' name='nameChange' ></td>
+                        </tr>
+                        <tr>
+                            <td><b>Website:</b></td>
+                            <td><input type='text' name='websiteChange' ></td>
+                        </tr>
+                        <tr>
+                            <td><b>Username:</b></td>
+                            <td><input type='text' name='usernameChange' ></td>
+                        </tr>
+                            <tr>
+                            <td><b>Password:</b></td>
+                            <td><input type='text' name='passwordChange' ></td>
+                        </tr>
+                        <tr>
+                            <td colspan='2' id'center'>
+                                <input type='submit' value='Submit' name='editInfo' class='button' onclick='checkItem();'/>&nbsp;
+                                <input type='submit' value='Cancel Change' name='cancelEdit' class='button'/>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div class='col-2'></div>
+        </div>";
+    }
+}
+
+function editLogin(){
+    $host = "fall-2018.cs.utexas.edu";
+    $user = "cs329e_mitra_valex8";
+    $pwd = "denote-naval9Deep";
+    $dbs = "cs329e_mitra_valex8";
+    $port = "3306";
+
+    $connect = mysqli_connect ($host, $user, $pwd, $dbs, $port);
+
+    if (empty($connect))
+    {
+    die("mysqli_connect failed: " . mysqli_connect_error());
+    }
+
+    extract($_POST);
+    $name = mysqli_real_escape_string ($connect, $_POST["nameChange"]);
+    $website = mysqli_real_escape_string ($connect, $_POST["websiteChange"]);
+    $username = mysqli_real_escape_string ($connect, $_POST["usernameChange"]);
+    $passwd = mysqli_real_escape_string ($connect, $_POST["passwordChange"]);
+    $table = "Vault";
+    $login = $_SESSION["username"];
+
+    global $idEdit;
+    $newID = substr(strval($idEdit), 0);
+
+    if ($name!="") {
+        $stmt1 = mysqli_query($connect, "UPDATE $table SET Name='$name' WHERE ID='$id'");
+    }
+    if ($website!="") {
+        $stmt2 = mysqli_query($connect, "UPDATE $table SET Website='$website' WHERE ID='$id'");
+    }
+    if ($username!=""){
+        $stmt3 = mysqli_query($connect, "UPDATE $table SET Username='$username' WHERE ID=$newID");
+    }
+    if ($passwd!="") {
+        $stmt4 = mysqli_query($connect, "UPDATE $table SET Password='$passwd' WHERE ID='$id'");
+    }
+    mysqli_close($connect);
 }
 ?>
     </div>
