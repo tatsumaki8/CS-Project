@@ -29,6 +29,8 @@
 
 
     <link rel="stylesheet" href="vault.css">
+    <link rel="stylesheet" href="sticky-footer.css">
+    <script src="./date.js"></script>
     <script src="./vault.js"></script>
 
     <style>
@@ -40,15 +42,43 @@
 </head>
 
 <body>
-    <div class="page-header bg-success">
-        <p>Hello</p>
-    </div>
-    <div class="container">
-        <?php
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-sm bg-success navbar-dark">
+        <a class="navbar-brand" href="home.php">
+            <img src="./rsc/LockBox_Logo.png" alt="Logo" style="width: 200px">
+        </a>
+        <ul class="navbar-nav mr-auto" style="font-family: 'Retro Computer'; font-size: 18pt">
+            <li class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="donate.html">Donate</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="help.html">Help</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact Us</a>
+            </li>
+        </ul>
+        <form id="searchForm" method="post" action="search.php" class="form-inline" style="font-family: 'Retro Computer';">
+            <div class="md-form my-0">
+                <input id="searchText" name="searchText" class="form-control mr-sm-2" type="text" placeholder="Search..."
+                    aria-label="Search">
+                <a>
+                    <ion-icon name="search" style="text-decoration: none; color: white; font-size: 28px"></ion-icon>
+                </a>
+            </div>
+        </form>
+    </nav>
+
+    <main>
+        <div class="container">
+            <?php
 session_start();
 if (isset($_SESSION["username"])) {
  $login = $_SESSION["username"];
- echo "<h1 class='text-center'> Welcome back $login </h1><br />";
+ 
 } else {
  checkLogin();
 }
@@ -62,44 +92,88 @@ if (isset($_POST["add"])) {
 } elseif (isset($_POST["change"])) {
  change();
 } else {
-
+ echo "<h1 class='text-center mt-3' style='font-family:\"Retro Computer\";'> Welcome back $login </h1>";
  print <<<PAGE
     <div class="row">
-        <div class="col-4"></div>
-        <div class="col-4">
-            <a href='#collapseOne' class='list-group-item bg-secondary text-white text-center' data-toggle='collapse'>Add New Site Login</a>
-            <div id='collapseOne' class='panel-collapse collapse'>
-                <br />
-                <form method="post" action="vault.php">
-                    <table class="table-responsive text-center">
-                        <tr>
-                            <td>Name:</td>
-                            <td><input type="text" name="name" required></td>
-                        </tr>
-                        <tr>
-                            <td>Website:</td>
-                            <td><input type="text" name="website" required ></td>
-                        </tr>
-                        <tr>
-                            <td>Username:</td>
-                            <td><input type="text" name="username" required ></td>
-                        </tr>
-                            <tr>
-                            <td>Password:</td>
-                            <td><input type="text" name="password" required></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" id="center">
-                                <br />
-                                <input type="submit" value="Enter" name="add" class="button" onclick="checkItem();"/>&nbsp;
-                                <input type="reset" value="Reset" class="button" />
-                            </td>
-                        </tr>
-                    </table>
-                </form>
-            </div>
+        <div class="col text-center">
+            <a href='#collapseOne' class='btn btn-success text-white text-center mb-3' data-toggle='collapse'>Add New Site Login</a>
         </div>
-        <div class="col-4"></div>
+    </div>
+    <div class="row panel-collapse collapse" id='collapseOne'>
+        <div class="col">
+            <form method="post" action="vault.php">
+                    <div class="form-group">
+                        <label>Name:</label>
+                        <input class="form-control" type="text" name="name" required placeholder="Example">
+                    </div>
+                    <div class="form-group">
+                        <label>Website:</label>
+                        <input class="form-control" type="text" name="website" required placeholder="www.example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Username:</label>
+                        <input class="form-control" type="text" name="username" required placeholder="Enter Username">
+                    </div>
+                    <div class="form-group">
+                        <label>Password:</label>
+                        <input id="new_pw" class="form-control" type="text" name="password" required placeholder="Enter Password">
+                    </div>
+                    <input type="submit" value="Enter" name="add" class="btn btn-success"/>&nbsp;
+                    <input type="reset" value="Reset" class="btn btn-secondary" />
+            </form>
+        </div>
+        <div class="col">
+        <!--Password Generator-->
+        <h2 class="text-center" style="font-family: 'Retro Computer';">Password Generator</h2>
+        <div class="row mb-3">
+            <div class="col-2"></div>
+            <div class="col-8 text-center">
+                <button type="button" class="btn btn-lg btn-success mb-3" onclick="generatePassword();" id="generatePassword">Generate
+                    Password</button><br>
+                <input type="text" class="mb-1 text-center text-info" name="generated_pw" id="generated_pw"
+                    readonly><br />
+                <script>
+                    window.addEventListener("load", function() {
+                        generatePassword();
+                    });
+                </script>
+                <button type="button" class="btn btn-sm btn-primary" onclick="copy();">Copy</button><br />
+                <div id="copied" class="font-italic text-muted"></div><br />
+                <div class="form-group">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="gen_pw_AZ" id="gen_pw_AZ" checked
+                            oninput="generatePassword();">
+                        <label class="form-check-label" for="gen_pw_AZ">A-Z</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="gen_pw_az" id="gen_pw_az" checked
+                            oninput="generatePassword();">
+                        <label class="form-check-label" for="gen_pw_AZ">a-z</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="gen_pw_09" id="gen_pw_num" checked
+                            oninput="generatePassword();">
+                        <label class="form-check-label" for="gen_pw_num">0-9</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="gen_pw_misc" id="gen_pw_misc" oninput="generatePassword();">
+                        <label class="form-check-label" for="gen_pw_misc">!@#$%^&*</label>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-2"></div>
+                        <div class="col-8">
+                            <input type="number" name="gen_pw_length_text" id="gen_pw_length_text" min=8 max=30
+                                oninput="sliderValue('gen_pw_length_text','gen_pw_length');" value="8">&nbsp;
+                            <input type="range" name="gen_pw_length" id="gen_pw_length" min="8" max="30" oninput="sliderValue('gen_pw_length', 'gen_pw_length_text');"
+                                value="8">
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        </div>
     </div>
     <br />
     <div class="row">
@@ -129,147 +203,86 @@ PAGE;
  $result = mysqli_query($connect, "SELECT * from $table WHERE Login='$login'");
  $count  = 0;
  while ($row = $result->fetch_row()) {
-  print "<a href='#collapse$count' class='list-group-item' data-toggle='collapse'>$row[2]</a>
+  print
+   "<a href='#collapse$count' class='list-group-item' data-toggle='collapse'>$row[2]</a>
         <div id='collapse$count' class='panel-collapse collapse'>
             <table class='list-group-item bg-secondary text-white text-center'>
                 <tr>
-                <td width='800'><b>Website: </b>$row[3]</td>
-                <td width='800'><b>Username: </b>$row[4]</td>
-                <td width='800'><b>Password: </b>$row[5]</td>
-                <td width='800'><button type='button' onclick='showPassword();' id='showPassword'> Show Password </button></td>
+                <td width='800'><b>Website: </b><i>$row[3]</i></td>
+                <td width='800'><b>Username: </b><i>$row[4]</i></td>
+                <td width='800'><b>Password: </b><i>$row[5]</i></td>
                 <td>
                     <form method='post' action='vault.php'>
                         <input type='hidden' name='$IDarray[$count]' value='<?php echo $row[2]; ?>'
-        />
-        <button name='edit' style='background: transparent; border: none'>
-            <ion-icon name='create' style='text-decoration: none; color: white; font-size: 28px'></ion-icon>
-        </button>
-        </form>
-        </td>
-        <td>
-            <form method='post'>
-                <input class='delete' type='hidden' name='$IDarray[$count]' />
-                <button name='delete' style='background: transparent; border: none'>
-                    <ion-icon name='trash' style='text-decoration: none; color: white; font-size: 28px'></ion-icon>
-                </button>
+            />
+            <button name='edit' style='background: transparent; border: none'>
+                <ion-icon name='create' style='text-decoration: none; color: white; font-size: 28px'></ion-icon>
+            </button>
             </form>
-        </td>
-        </tr>
-        </table>
-    </div>";
-    $count++;
-    }
-    $result->free();
-    // Close connection to the database
-    mysqli_close($connect);
-    }
-
-    function checkLogin()
-    {
-    // Connect to the database
-    $host = "fall-2018.cs.utexas.edu";
-    $user = "cs329e_mitra_vtruong";
-    $pwd = "Widen3sheep\$visa";
-    $dbs = "cs329e_mitra_vtruong";
-    $port = "3306";
-
-    $connect = mysqli_connect($host, $user, $pwd, $dbs, $port);
-
-    $table = "Lockbox";
-
-    if (empty($connect)) {
-    die("mysqli_connect failed: " . mysqli_connect_error());
-    }
-
-    $username = mysqli_real_escape_string($connect, $_POST["username"]);
-    $password = mysqli_real_escape_string($connect, $_POST["password"]);
-    if (isset($_POST["remember"])) {
-    $remember = $_POST["remember"];
-    } else {
-    $remember = "no";
-    }
-
-    $result = mysqli_query($connect, "SELECT * from $table WHERE username='$username' AND pass='$password'");
-
-    if (mysqli_num_rows($result) == 1) {
-    $_SESSION["username"] = $username;
-    if ($remember == 'yes') {
-    setcookie("user", $username, time() + (86400 * 30));
-    } else {
-    setcookie("user", "", time() - 3600);
-    }
-    header('Location: ' . $_SERVER['REQUEST_URI']);
-    } else {
-    header('Location: login.php');
-    }
-    }
-
-    function insert()
-    {
-    $host = "fall-2018.cs.utexas.edu";
-    $user = "cs329e_mitra_valex8";
-    $pwd = "denote-naval9Deep";
-    $dbs = "cs329e_mitra_valex8";
-    $port = "3306";
-
-    $connect = mysqli_connect($host, $user, $pwd, $dbs, $port);
-
-    if (empty($connect)) {
-    die("mysqli_connect failed: " . mysqli_connect_error());
-    }
-
-    $table = "Vault";
-    $result = mysqli_query($connect, "SELECT * from $table");
-    $IDarray = array();
-    while ($row = $result->fetch_row()) {
-    array_push($IDarray, $row[0]);
-    }
-
-    extract($_POST);
-    $login = $_SESSION["username"];
-    $id = end($IDarray) + 1;
-    $name = mysqli_real_escape_string($connect, $_POST["name"]);
-    $website = mysqli_real_escape_string($connect, $_POST["website"]);
-    $username = mysqli_real_escape_string($connect, $_POST["username"]);
-    $passwd = mysqli_real_escape_string($connect, $_POST["password"]);
-
-    $stmt = mysqli_prepare($connect, "INSERT INTO $table VALUES (?, ?, ?, ?, ?, ?)");
-    mysqli_stmt_bind_param($stmt, 'ssssss', $id, $login, $name, $website, $username, $passwd);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-    mysqli_close($connect);
-    header("Location: vault.php");
-    }
-
-    function delete()
-    {
-    $host = "fall-2018.cs.utexas.edu";
-    $user = "cs329e_mitra_valex8";
-    $pwd = "denote-naval9Deep";
-    $dbs = "cs329e_mitra_valex8";
-    $port = "3306";
-
-    $connect = mysqli_connect($host, $user, $pwd, $dbs, $port);
-
-    if (empty($connect)) {
-    die("mysqli_connect failed: " . mysqli_connect_error());
-    }
-
-    $table = "Vault";
-    $login = $_SESSION["username"];
-    $result = mysqli_query($connect, "SELECT ID from $table WHERE Login='$login'");
-
-    while ($row = $result->fetch_row()) {
-    $count = 0;
-    while ($count <= mysqli_num_rows(mysqli_query($connect, "SELECT * from $table" ))) {extract($_POST);if
-        (isset($_POST[$count])) {$id=$count; break;} else { $count++;}}} $stmt=mysqli_query($connect,
-        "DELETE FROM $table WHERE ID = '$id'" ); $result->free();
+            </td>
+            <td>
+                <form method='post'>
+                    <input class='delete' type='hidden' name='$IDarray[$count]' />
+                    <button name='delete' style='background: transparent; border: none'>
+                        <ion-icon name='trash' style='text-decoration: none; color: white; font-size: 28px'></ion-icon>
+                    </button>
+                </form>
+            </td>
+            </tr>
+            </table>
+        </div>";
+        $count++;
+        }
+        $result->free();
+        // Close connection to the database
         mysqli_close($connect);
-        header("Location: vault.php");
         }
 
-        $idEdit = "";
-        function edit()
+        function checkLogin()
+        {
+        // Connect to the database
+        $host = "fall-2018.cs.utexas.edu";
+        $user = "cs329e_mitra_vtruong";
+        $pwd = "Widen3sheep\$visa";
+        $dbs = "cs329e_mitra_vtruong";
+        $port = "3306";
+
+        $connect = mysqli_connect($host, $user, $pwd, $dbs, $port);
+
+        $table = "Lockbox";
+
+        if (empty($connect)) {
+        die("mysqli_connect failed: " . mysqli_connect_error());
+        }
+
+        $username = mysqli_real_escape_string($connect, $_POST["username"]);
+        $password = mysqli_real_escape_string($connect, $_POST["password"]);
+        if (isset($_POST["remember"])) {
+        $remember = $_POST["remember"];
+        } else {
+        $remember = "no";
+        }
+
+        $result = mysqli_query($connect, "SELECT pass from $table WHERE username='$username'");
+        $row = mysqli_fetch_row($result);
+
+        if (mysqli_num_rows($result) == 1) {
+        if (password_verify($password, $row[0])){
+        $_SESSION["username"] = $username;
+
+        }
+        if ($remember == 'yes') {
+        setcookie("user", $username, time() + (86400 * 30));
+        } else {
+        setcookie("user", "", time() - 3600);
+        }
+        header('Location: ' . $_SERVER['REQUEST_URI']);
+        } else {
+        header('Location: login.php');
+        }
+        }
+
+        function insert()
         {
         $host = "fall-2018.cs.utexas.edu";
         $user = "cs329e_mitra_valex8";
@@ -282,89 +295,188 @@ PAGE;
         if (empty($connect)) {
         die("mysqli_connect failed: " . mysqli_connect_error());
         }
+
+        $table = "Vault";
+        $result = mysqli_query($connect, "SELECT * from $table");
+        $IDarray = array();
+        while ($row = $result->fetch_row()) {
+        array_push($IDarray, $row[0]);
+        }
+
+        extract($_POST);
+        $login = $_SESSION["username"];
+        $id = end($IDarray) + 1;
+        $name = mysqli_real_escape_string($connect, $_POST["name"]);
+        $website = mysqli_real_escape_string($connect, $_POST["website"]);
+        $username = mysqli_real_escape_string($connect, $_POST["username"]);
+        $passwd = mysqli_real_escape_string($connect, $_POST["password"]);
+
+        $stmt = mysqli_prepare($connect, "INSERT INTO $table VALUES (?, ?, ?, ?, ?, ?)");
+        mysqli_stmt_bind_param($stmt, 'ssssss', $id, $login, $name, $website, $username, $passwd);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+        mysqli_close($connect);
+        header("Location: vault.php");
+        }
+
+        function delete()
+        {
+        $host = "fall-2018.cs.utexas.edu";
+        $user = "cs329e_mitra_valex8";
+        $pwd = "denote-naval9Deep";
+        $dbs = "cs329e_mitra_valex8";
+        $port = "3306";
+
+        $connect = mysqli_connect($host, $user, $pwd, $dbs, $port);
+
+        if (empty($connect)) {
+        die("mysqli_connect failed: " . mysqli_connect_error());
+        }
+
         $table = "Vault";
         $login = $_SESSION["username"];
-        $result = mysqli_query($connect, "SELECT * from $table WHERE Login='$login'");
+        $result = mysqli_query($connect, "SELECT ID from $table WHERE Login='$login'");
+
         while ($row = $result->fetch_row()) {
         $count = 0;
         while ($count <= mysqli_num_rows(mysqli_query($connect, "SELECT * from $table" ))) {extract($_POST);if
-            (isset($_POST[$count])) {global $idEdit; $idEdit=$count; break;} else { $count++;}}} $stmt=mysqli_query($connect,
-            "SELECT * from $table WHERE ID = '$idEdit'" );while ($row=$stmt->fetch_row())
+            (isset($_POST[$count])) {$id=$count; break;} else { $count++;}}} $stmt=mysqli_query($connect,
+            "DELETE FROM $table WHERE ID = '$id'" ); $result->free();
+            mysqli_close($connect);
+            header("Location: vault.php");
+            }
+
+            $idEdit = "";
+            function edit()
             {
-            print
-            "<div class='row'>
-                <div class='col-2'></div>
-                <div class='col-4'>
-                    <a href='#collapseOld' class='list-group-item bg-secondary text-white text-center' data-toggle='collapse'>Old
-                        Site Login</a>
-                    <div id='collapseOld' class='panel-collapse collapse show'>
-                        <br />
-                        <form method='post' action='vault.php'>
-                            <table class='table-responsive text-center'>
-                                <tr>
-                                    <td><b>Name:</b></td>
-                                    <td><input class='delete' type='hidden' name='edit$id' />$row[2]</td>
-                                </tr>
-                                <tr>
-                                    <td><b>Website:</b></td>
-                                    <td>$row[3]</td>
-                                </tr>
-                                <tr>
-                                    <td><b>Username:</b></td>
-                                    <td>$row[4]</td>
-                                </tr>
-                                <tr>
-                                    <td><b>Password:</b></td>
-                                    <td>$row[5]</td>
-                                </tr>
-                            </table>
-                        </form>
-                    </div>
-                </div>
-                <div class='col-4'>
-                    <a href='#collapseNew' class='list-group-item bg-secondary text-white text-center' data-toggle='collapse'>Change
-                        Site Login</a>
-                    <div id='collapseNew' class='panel-collapse collapse show'>
-                        <br />
-                        <form method='post' action='edit.php'>
-                            <table class='table-responsive text-center'>
-                                <input type='hidden' name='id' value='$idEdit'>
-                                <tr>
-                                    <td><b>Name:</b></td>
-                                    <td><input type='text' name='nameChange'></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Website:</b></td>
-                                    <td><input type='text' name='websiteChange'></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Username:</b></td>
-                                    <td><input type='text' name='usernameChange'></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Password:</b></td>
-                                    <td><input type='text' name='passwordChange'></td>
-                                </tr>
-                                <tr>
-                                    <td colspan='2' id'center'>
-                                        <input type='submit' value='Submit' name='editInfo' class='button' onclick='checkItem();' />&nbsp;
-                                        <input type='submit' value='Cancel Change' name='cancelEdit' class='button' />
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
-                    </div>
-                </div>
-                <div class='col-2'></div>
-            </div>";
+            $host = "fall-2018.cs.utexas.edu";
+            $user = "cs329e_mitra_valex8";
+            $pwd = "denote-naval9Deep";
+            $dbs = "cs329e_mitra_valex8";
+            $port = "3306";
+            $connect = mysqli_connect($host, $user, $pwd, $dbs, $port);
+            if (empty($connect)) {
+            die("mysqli_connect failed: " . mysqli_connect_error());
             }
-            }
+            $table = "Vault";
+            $login = $_SESSION["username"];
+            $result = mysqli_query($connect, "SELECT * from $table WHERE Login='$login'");
+            while ($row = $result->fetch_row()) {
+            $count = 0;
+            while ($count <= mysqli_num_rows(mysqli_query($connect, "SELECT * from $table" ))) {extract($_POST);if
+                (isset($_POST[$count])) {global $idEdit; $idEdit=$count; break;} else { $count++;}}} $stmt=mysqli_query($connect,
+                "SELECT * from $table WHERE ID = '$idEdit'" );while ($row=$stmt->fetch_row()) {
+                echo "<h1 class='text-center mt-3' style='font-family:\"Retro Computer\";'> Edit Info </h1>";
+                print
+                "<div class='row'>
+                    <div class='col-2'></div>
+                    <div class='col-4'>
+                        <div>
+                            <br />
+                            <form method='post' action='vault.php'>
+                                <table class='table-responsive text-center'>
+                                    <tr>
+                                        <td><b>Name:</b></td>
+                                        <td><input class='delete' type='hidden' name='edit$id' />$row[2]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Website:</b></td>
+                                        <td>$row[3]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Username:</b></td>
+                                        <td>$row[4]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Password:</b></td>
+                                        <td>$row[5]</td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                    <div class='col-4'>
+                        <div>
+                            <br />
+                            <form method='post' action='edit.php'>
+                                <table class='table-responsive text-center'>
+                                    <input type='hidden' name='id' value='$idEdit'>
+                                    <tr>
+                                        <td><b>Name:</b></td>
+                                        <td><input type='text' name='nameChange'></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Website:</b></td>
+                                        <td><input type='text' name='websiteChange'></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Username:</b></td>
+                                        <td><input type='text' name='usernameChange'></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Password:</b></td>
+                                        <td><input type='text' name='passwordChange'></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan='2' id'center'>
+                                            <input type='submit' value='Submit' name='editInfo' class='button' onclick='checkItem();' />&nbsp;
+                                            <input type='submit' value='Cancel Change' name='cancelEdit' class='button' />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                    <div class='col-2'></div>
+                </div>";
+                }
+                }
+
+                echo "<div class='text-center mt-3'><a href='logout.php'><button class='btn btn-danger'>Logout</button></a></div>"
+                ?>
+                </div>
 
 
-            ?>
+
+    </main>
+
+    <!--Footer-->
+    <footer class="footer bg-dark text-white mt-5">
+        <div class="container">
+            <div class="row text-center d-flex justify-content-center pt-5 mb-3">
+                <div class="col-md-3 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                        © 2018 LockBox LLC
+                    </h6>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                        Support
+                    </h6>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                        Privacy
+                    </h6>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                        Terms of Service
+                    </h6>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <h6 class="text-uppercase font-weight-bold" id="currentDate">
+                    </h6>
+                    <script>
+                        window.addEventListener("load", function () {
+                            currentDate();
+                        });
+                    </script>
+                </div>
             </div>
-            </div>
-            </div>
+        </div>
+    </footer>
+
 </body>
 
 </html>

@@ -123,6 +123,7 @@ if (!empty($username) && !empty($email) && !empty($password) && !empty($rpasswor
 }
 
 $table = "Lockbox";
+$password = password_hash($password, PASSWORD_DEFAULT);
 
 if ($valid) {
 // Check if email is taken in the database
