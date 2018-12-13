@@ -78,7 +78,7 @@
 session_start();
 if (isset($_SESSION["username"])) {
  $login = $_SESSION["username"];
- 
+
 } else {
  checkLogin();
 }
@@ -97,6 +97,9 @@ if (isset($_POST["add"])) {
     <div class="row">
         <div class="col text-center">
             <a href='#collapseOne' class='btn btn-success text-white text-center mb-3' data-toggle='collapse'>Add New Site Login</a>
+        </div>
+        <div class="col text-center">
+            <a href='deleteAccount.php' class='btn btn-success text-white text-center mb-3' data-toggle='collapse'>Delete Account</a>
         </div>
     </div>
     <div class="row panel-collapse collapse" id='collapseOne'>
