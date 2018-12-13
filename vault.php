@@ -78,7 +78,6 @@
 session_start();
 if (isset($_SESSION["username"])) {
  $login = $_SESSION["username"];
- 
 } else {
  checkLogin();
 }
@@ -203,6 +202,9 @@ PAGE;
  $result = mysqli_query($connect, "SELECT * from $table WHERE Login='$login'");
  $count  = 0;
  while ($row = $result->fetch_row()) {
+  // Decrypts the stored passwords using the key
+  $key = 'bRuD5WYw5wd0rdHR9yLlM6wt2vteuiniQBqE70nAuhU=';
+  $row[5] = my_decrypt($row[5], $key);
   print
    "<a href='#collapse$count' class='list-group-item' data-toggle='collapse'>$row[2]</a>
         <div id='collapse$count' class='panel-collapse collapse'>
@@ -310,6 +312,10 @@ PAGE;
         $website = mysqli_real_escape_string($connect, $_POST["website"]);
         $username = mysqli_real_escape_string($connect, $_POST["username"]);
         $passwd = mysqli_real_escape_string($connect, $_POST["password"]);
+
+        // Encrypts the password for the database
+        $key = 'bRuD5WYw5wd0rdHR9yLlM6wt2vteuiniQBqE70nAuhU=';
+        $passwd = my_encrypt($passwd, $key);
 
         $stmt = mysqli_prepare($connect, "INSERT INTO $table VALUES (?, ?, ?, ?, ?, ?)");
         mysqli_stmt_bind_param($stmt, 'ssssss', $id, $login, $name, $website, $username, $passwd);
@@ -435,7 +441,27 @@ PAGE;
                 }
                 }
 
-                echo "<div class='text-center mt-3'><a href='logout.php'><button class='btn btn-danger'>Logout</button></a></div>"
+                echo "<div class='text-center mt-3'><a href='logout.php'><button class='btn btn-danger'>Logout</button></a></div>";
+
+                function my_encrypt($data, $key) {
+                // Remove the base64 encoding from our key
+                $encryption_key = base64_decode($key);
+                // Generate an initialization vector
+                $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+                // Encrypt the data using AES 256 encryption in CBC mode using our encryption key
+                $encrypted = openssl_encrypt($data, 'aes-256-cbc', $encryption_key, 0, $iv);
+                // The $iv is just as important as the key for decrypting, so save it with our encrypted data
+                return base64_encode($encrypted . '::' . $iv);
+                }
+
+                function my_decrypt($data, $key) {
+                // Remove the base64 encoding from our key
+                $encryption_key = base64_decode($key);
+                // To decrypt, split the encrypted data from our IV - our unique separator used was "::"
+                list($encrypted_data, $iv) = explode('::', base64_decode($data), 2);
+                return openssl_decrypt($encrypted_data, 'aes-256-cbc', $encryption_key, 0, $iv);
+                }
+
                 ?>
                 </div>
 
