@@ -381,67 +381,57 @@ PAGE;
                 );while ($row=$stmt->fetch_row()) {
                 echo "<h1 class='text-center mt-3' style='font-family:\"Retro Computer\";'> Edit Info </h1>";
                 print
-                "<div class='row'>
-                    <div class='col-2'></div>
-                    <div class='col-4'>
-                        <div>
-                            <br />
-                            <form method='post' action='vault.php'>
-                                <table class='table-responsive text-center'>
-                                    <tr>
-                                        <td><b>Name:</b></td>
-                                        <td><input class='delete' type='hidden' name='edit$id' />$row[2]</td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Website:</b></td>
-                                        <td>$row[3]</td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Username:</b></td>
-                                        <td>$row[4]</td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Password:</b></td>
-                                        <td>$row[5]</td>
-                                    </tr>
-                                </table>
-                            </form>
+                "<form method='post' action='edit.php'>
+                    <div class='row'>
+                        <div class='col-2'></div>
+                        <div class='col-4'>
+                            <h3 class='text-center mt-3' style='font-family:\"Retro Computer\";'>Old</h3>
+                            <div class='form-group'>
+                                <label><b>Name:</b></label>
+                                <input class='form-control type=' text' placeholder='$row[2]' readonly>
+                            </div>
+                            <div class='form-group'>
+                                <label><b>Website: </b></label>
+                                <input class='form-control type=' text' placeholder='$row[3]' readonly>
+                            </div>
+                            <div class='form-group'>
+                                <label><b>Username:</b></label>
+                                <input class='form-control type=' text' placeholder='$row[4]' readonly>
+                            </div>
+                            <div class='form-group'>
+                                <label><b>Password:</b></label>
+                                <input class='form-control type=' text' placeholder='$row[5]' readonly>
+                            </div>
                         </div>
-                    </div>
-                    <div class='col-4'>
-                        <div>
-                            <br />
-                            <form method='post' action='edit.php'>
-                                <table class='table-responsive text-center'>
-                                    <input type='hidden' name='id' value='$idEdit'>
-                                    <tr>
-                                        <td><b>Name:</b></td>
-                                        <td><input type='text' name='nameChange'></td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Website:</b></td>
-                                        <td><input type='text' name='websiteChange'></td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Username:</b></td>
-                                        <td><input type='text' name='usernameChange'></td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Password:</b></td>
-                                        <td><input type='text' name='passwordChange'></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan='2' id'center'>
-                                            <input type='submit' value='Submit' name='editInfo' class='button' />&nbsp;
-                                            <input type='submit' value='Cancel Change' name='cancelEdit' class='button' />
-                                        </td>
-                                    </tr>
-                                </table>
-                            </form>
+                        <div class='col-4'>
+                            <h3 class='text-center mt-3' style='font-family:\"Retro Computer\";'>New</h3>
+                            <div>
+                                <input type='hidden' name='id' value='$idEdit'>
+                                <div class='form-group'>
+                                    <label><b>Name:</b></label>
+                                    <input class='form-control type=' text' placeholder='Example' name='nameChange'>
+                                </div>
+                                <div class='form-group'>
+                                    <label><b>Website:</b></label>
+                                    <input class='form-control type=' text' placeholder='www.example.com' name='websiteChange'>
+                                </div>
+                                <div class='form-group'>
+                                    <label><b>Username:</b></label>
+                                    <input class='form-control type=' text' placeholder='Enter Username' name='usernameChange'>
+                                </div>
+                                <div class='form-group'>
+                                    <label><b>Password:</b></label>
+                                    <input class='form-control type=' text' placeholder='Enter Password' name='passwordChange'>
+                                </div>
+                            </div>
                         </div>
+                        <div class='col-2'></div>
                     </div>
-                    <div class='col-2'></div>
-                </div>";
+                    <div class='text-center'>
+                        <input type='submit' value='Submit' name='editInfo' class='btn btn-success' />
+                        <input type='submit' value='Cancel Change' name='cancelEdit' class='btn btn-secondary' />
+                    </div>
+                </form>";
                 }
                 }
 
