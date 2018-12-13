@@ -385,6 +385,8 @@ PAGE;
             while ($count <= end($IDarray) + 1) {extract($_POST);if (isset($_POST[$count])) {global $idEdit; $idEdit=$count;
                 break;} else { $count++;}}} $stmt=mysqli_query($connect, "SELECT * from $table WHERE ID = '$idEdit'"
                 );while ($row=$stmt->fetch_row()) {
+                $key = 'bRuD5WYw5wd0rdHR9yLlM6wt2vteuiniQBqE70nAuhU=';
+                $row[5] = my_decrypt($row[5], $key);
                 echo "<h1 class='text-center mt-3' style='font-family:\"Retro Computer\";'> Edit Info </h1>";
                 print
                 "<form method='post' action='edit.php'>
