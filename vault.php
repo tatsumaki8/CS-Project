@@ -94,7 +94,7 @@ if (isset($_POST["add"])) {
 } elseif (isset($_POST["change"])) {
  change();
 } else {
- echo "<h1 class='text-center mt-3' style='font-family:\"Retro Computer\";'> Welcome back $login </h1>";
+ echo "<h1 class='text-center mt-3 mb-3' style='font-family:\"Retro Computer\";'> Welcome back $login </h1>";
  print <<<PAGE1
     <div class="row">
         <div class="col-2"></div>
@@ -516,8 +516,9 @@ PAGE;
                 </form>";
                 }
                 }
-                echo "<div class='row'><div class='col-4'></div><div class='col-2'><div class='text-center mt-3'><form method='post' action='vault.php'><button name='deleteAccount' class='btn btn-dark text-white'>Delete Account</button></form></div></div>";
-                echo "<div class='col-2'><div class='text-center mt-3'><a href='logout.php'><button class='btn btn-danger'>Logout</button></a></div></div><div class='col-4'></div></div>";
+                
+                echo "<div class='text-center mt-3'><a href='logout.php'><button class='btn btn-danger'>Logout</button></a><form method='post' action='vault.php'><button name='deleteAccount' class='btn btn-dark text-white mt-3'>Delete Account</button></form></div></div>";
+                
                 function my_encrypt($data, $key) {
                 // Remove the base64 encoding from our key
                 $encryption_key = base64_decode($key);
