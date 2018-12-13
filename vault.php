@@ -81,13 +81,14 @@ if (isset($_SESSION["username"])) {
 } else {
  checkLogin();
 }
-
 if (isset($_POST["add"])) {
  insert();
 } elseif (isset($_POST["delete"])) {
  delete();
 } elseif (isset($_POST["edit"])) {
  edit();
+} elseif (isset($_POST["deleteAccount"])) {
+    deleteAccount();
 } elseif (isset($_POST["change"])) {
  change();
 } else {
@@ -96,6 +97,9 @@ if (isset($_POST["add"])) {
     <div class="row">
         <div class="col text-center">
             <a href='#collapseOne' class='btn btn-success text-white text-center mb-3' data-toggle='collapse'>Add New Site Login</a>
+        </div>
+        <div class="col text-center">
+            <a href='#collapseTwo' class='btn btn-success text-white text-center mb-3' data-toggle='collapse'>Delete Account</a>
         </div>
     </div>
     <div class="row panel-collapse collapse" id='collapseOne'>
@@ -174,23 +178,30 @@ if (isset($_POST["add"])) {
         </div>
         </div>
     </div>
+    <div class="row panel-collapse collapse" id='collapseTwo'>
+        <div class="col-4"></div>
+        <div class="col-4 text-center">
+            <form method="post" action="vault.php">
+                    <p class="text-center"><b>Are you sure you want to delete your Lockbox account? Deleting your account is permanent, and all information stored on Lockbox will be lost. You will automatically be logged out. </b></p>
+                    <input type="submit" value="Yes" name="deleteAccount" class="btn btn-success"/>&nbsp;
+                    <input type="reset" value="Cancel" class="btn btn-secondary" />
+            </form>
+        </div>
+        <div class="col-4"></div>
+    </div>
     <br />
     <div class="row">
         <div class="col-lg">
 PAGE;
-
  $host = "fall-2018.cs.utexas.edu";
  $user = "cs329e_mitra_valex8";
  $pwd  = "denote-naval9Deep";
  $dbs  = "cs329e_mitra_valex8";
  $port = "3306";
-
  $connect = mysqli_connect($host, $user, $pwd, $dbs, $port);
-
  if (empty($connect)) {
   die("mysqli_connect failed: " . mysqli_connect_error());
  }
-
  $table   = "Vault";
  $result  = mysqli_query($connect, "SELECT * from $table WHERE Login='$login'");
  $IDarray = array();
@@ -198,7 +209,6 @@ PAGE;
   array_push($IDarray, $row[0]);
  }
  $result->free();
-
  $result = mysqli_query($connect, "SELECT * from $table WHERE Login='$login'");
  $count  = 0;
  while ($row = $result->fetch_row()) {
@@ -239,7 +249,6 @@ PAGE;
         // Close connection to the database
         mysqli_close($connect);
         }
-
         function checkLogin()
         {
         // Connect to the database
@@ -248,15 +257,11 @@ PAGE;
         $pwd = "Widen3sheep\$visa";
         $dbs = "cs329e_mitra_vtruong";
         $port = "3306";
-
         $connect = mysqli_connect($host, $user, $pwd, $dbs, $port);
-
         $table = "Lockbox";
-
         if (empty($connect)) {
         die("mysqli_connect failed: " . mysqli_connect_error());
         }
-
         $username = mysqli_real_escape_string($connect, $_POST["username"]);
         $password = mysqli_real_escape_string($connect, $_POST["password"]);
         if (isset($_POST["remember"])) {
@@ -264,14 +269,11 @@ PAGE;
         } else {
         $remember = "no";
         }
-
         $result = mysqli_query($connect, "SELECT pass from $table WHERE username='$username'");
         $row = mysqli_fetch_row($result);
-
         if (mysqli_num_rows($result) == 1) {
         if (password_verify($password, $row[0])){
         $_SESSION["username"] = $username;
-
         }
         if ($remember == 'yes') {
         setcookie("user", $username, time() + (86400 * 30));
@@ -283,7 +285,6 @@ PAGE;
         header('Location: login.php');
         }
         }
-
         function insert()
         {
         $host = "fall-2018.cs.utexas.edu";
@@ -291,20 +292,16 @@ PAGE;
         $pwd = "denote-naval9Deep";
         $dbs = "cs329e_mitra_valex8";
         $port = "3306";
-
         $connect = mysqli_connect($host, $user, $pwd, $dbs, $port);
-
         if (empty($connect)) {
         die("mysqli_connect failed: " . mysqli_connect_error());
         }
-
         $table = "Vault";
         $result = mysqli_query($connect, "SELECT * from $table");
         $IDarray = array();
         while ($row = $result->fetch_row()) {
         array_push($IDarray, $row[0]);
         }
-
         extract($_POST);
         $login = $_SESSION["username"];
         $id = end($IDarray) + 1;
@@ -312,11 +309,9 @@ PAGE;
         $website = mysqli_real_escape_string($connect, $_POST["website"]);
         $username = mysqli_real_escape_string($connect, $_POST["username"]);
         $passwd = mysqli_real_escape_string($connect, $_POST["password"]);
-
         // Encrypts the password for the database
         $key = 'bRuD5WYw5wd0rdHR9yLlM6wt2vteuiniQBqE70nAuhU=';
         $passwd = my_encrypt($passwd, $key);
-
         $stmt = mysqli_prepare($connect, "INSERT INTO $table VALUES (?, ?, ?, ?, ?, ?)");
         mysqli_stmt_bind_param($stmt, 'ssssss', $id, $login, $name, $website, $username, $passwd);
         mysqli_stmt_execute($stmt);
@@ -324,7 +319,6 @@ PAGE;
         mysqli_close($connect);
         header("Location: vault.php");
         }
-
         function delete()
         {
         $host = "fall-2018.cs.utexas.edu";
@@ -332,13 +326,10 @@ PAGE;
         $pwd = "denote-naval9Deep";
         $dbs = "cs329e_mitra_valex8";
         $port = "3306";
-
         $connect = mysqli_connect($host, $user, $pwd, $dbs, $port);
-
         if (empty($connect)) {
         die("mysqli_connect failed: " . mysqli_connect_error());
         }
-
         $table = "Vault";
         $login = $_SESSION["username"];
         $result = mysqli_query($connect, "SELECT * from $table");
@@ -347,9 +338,7 @@ PAGE;
         array_push($IDarray, $row[0]);
         }
         $result->free();
-
         $result = mysqli_query($connect, "SELECT ID from $table WHERE Login='$login'");
-
         while ($row = $result->fetch_row()) {
         $count = 0;
         while ($count <= end($IDarray) + 1) {extract($_POST);if (isset($_POST[$count])) {$id=$count; break;} else {
@@ -357,7 +346,6 @@ PAGE;
             mysqli_close($connect);
             header("Location: vault.php");
             }
-
             $idEdit = "";
             function edit()
             {
@@ -378,7 +366,6 @@ PAGE;
             array_push($IDarray, $row[0]);
             }
             $result->free();
-
             $result = mysqli_query($connect, "SELECT * from $table WHERE Login='$login'");
             while ($row = $result->fetch_row()) {
             $count = 0;
@@ -490,9 +477,7 @@ PAGE;
                 </form>";
                 }
                 }
-
                 echo "<div class='text-center mt-3'><a href='logout.php'><button class='btn btn-danger'>Logout</button></a></div>";
-
                 function my_encrypt($data, $key) {
                 // Remove the base64 encoding from our key
                 $encryption_key = base64_decode($key);
@@ -503,7 +488,6 @@ PAGE;
                 // The $iv is just as important as the key for decrypting, so save it with our encrypted data
                 return base64_encode($encrypted . '::' . $iv);
                 }
-
                 function my_decrypt($data, $key) {
                 // Remove the base64 encoding from our key
                 $encryption_key = base64_decode($key);
@@ -512,6 +496,46 @@ PAGE;
                 return openssl_decrypt($encrypted_data, 'aes-256-cbc', $encryption_key, 0, $iv);
                 }
 
+                function deleteAccount(){
+                    $host = "fall-2018.cs.utexas.edu";
+                    $user = "cs329e_mitra_vtruong";
+                    $pwd = "Widen3sheep\$visa";
+                    $dbs = "cs329e_mitra_vtruong";
+                    $port = "3306";
+                    $connect = mysqli_connect($host, $user, $pwd, $dbs, $port);
+                    $table = "Lockbox";
+                    if (empty($connect)) {
+                    die("mysqli_connect failed: " . mysqli_connect_error());
+                    }
+
+                    $table = "Lockbox";
+                    $username = $_SESSION["username"];
+                    $stmt = mysqli_query($connect, "DELETE FROM $table WHERE username = '$username'");
+                    mysqli_close($connect);
+
+                    $host = "fall-2018.cs.utexas.edu";
+                    $user = "cs329e_mitra_valex8";
+                    $pwd  = "denote-naval9Deep";
+                    $dbs  = "cs329e_mitra_valex8";
+                    $port = "3306";
+
+                    $connect = mysqli_connect($host, $user, $pwd, $dbs, $port);
+
+                    if (empty($connect)) {
+                     die("mysqli_connect failed: " . mysqli_connect_error());
+                    }
+
+                    $table   = "Vault";
+                    $username = $_SESSION["username"];
+                    $stmt = mysqli_query($connect, "DELETE FROM $table WHERE Login = '$username'");
+                    mysqli_close($connect);
+
+                    session_start();
+
+                    session_unset();
+                    session_destroy();
+                    header("Location: ./home.php");
+                }
                 ?>
                 </div>
 
