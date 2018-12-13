@@ -130,7 +130,7 @@ function copy() {
     var success = document.getElementById("copied");
     if (copyText.value != "") {
         success.innerHTML = "Copied to Clipboard!";
-        setTimeout(function() {
+        setTimeout(function () {
             success.innerHTML = "";
         }, 5000);
     }
@@ -138,6 +138,37 @@ function copy() {
 }
 
 // Enable tooltips
-$(function() {
+$(function () {
     $('[data-toggle="tooltip"]').tooltip();
 })
+
+// Send request to server to check signup
+function callServer() {
+    xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            if (xmlhttp.responseText == "Email taken") {
+                document.getElementById("signup-response").innerHTML = xmlhttp.responseText;
+            } else if (xmlhttp.responseText == "Username taken") {
+                document.getElementById("signup-response").innerHTML = xmlhttp.responseText;
+            } else {
+                document.getElementById("signup-response").innerHTML = "";
+            }
+        }
+    }
+
+    var user = document.getElementById("c_user").value;
+    var email = document.getElementById("c_email").value;
+
+    var url = "./ajax.php";
+    var par = "username=" + user + "&email=" + email;
+
+    xmlhttp.open("POST", url, true);
+
+    xmlhttp.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    xmlhttp.setRequestHeader("content-length", par.length);
+    xmlhttp.setRequestHeader("connection", "close");
+
+    xmlhttp.send(par);
+}
