@@ -20,6 +20,21 @@
  $table    = "Vault";
  $login    = $_SESSION["username"];
 
+ // Encrypts the password for the database
+ $key = 'bRuD5WYw5wd0rdHR9yLlM6wt2vteuiniQBqE70nAuhU=';
+ $passwd = my_encrypt($passwd, $key);
+
+ function my_encrypt($data, $key) {
+    // Remove the base64 encoding from our key
+    $encryption_key = base64_decode($key);
+    // Generate an initialization vector
+    $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+    // Encrypt the data using AES 256 encryption in CBC mode using our encryption key
+    $encrypted = openssl_encrypt($data, 'aes-256-cbc', $encryption_key, 0, $iv);
+    // The $iv is just as important as the key for decrypting, so save it with our encrypted data
+    return base64_encode($encrypted . '::' . $iv);
+}
+
 
  if ($name != "") {
   $stmt1 = mysqli_query($connect, "UPDATE $table SET Name='$name' WHERE ID='$id'");
