@@ -459,7 +459,7 @@ PAGE2;
                             </div>
                         </div>";
                         print <<<PAGE
-                        
+
                         <div class="col-4 text-center">
                         <h3 class='text-center mt-3' style='font-family:"Retro Computer";'>Password Generator</h3>
                 <button type="button" class="btn btn-lg btn-success mb-3" onclick="generatePassword();" id="generatePassword">Generate
@@ -506,7 +506,7 @@ PAGE2;
                 </div>
 
 PAGE;
-                        
+
                        print "</div>
                     </div>
                     <div class='text-center'>
@@ -598,6 +598,26 @@ PAGE;
                 	}
                 	if ($newUsername!="") {
                 		$stmt2 = mysqli_query($connect, "UPDATE $table SET username='$newUsername' WHERE username='$username'");
+                	}
+                    mysqli_close($connect);
+
+                    $host = "fall-2018.cs.utexas.edu";
+                    $user = "cs329e_mitra_valex8";
+                    $pwd  = "denote-naval9Deep";
+                    $dbs  = "cs329e_mitra_valex8";
+                    $port = "3306";
+
+                    $connect = mysqli_connect($host, $user, $pwd, $dbs, $port);
+
+                    if (empty($connect)) {
+                     die("mysqli_connect failed: " . mysqli_connect_error());
+                    }
+
+                    $table   = "Vault";
+                    $username = $_SESSION["username"];
+                    $newUsername = $_POST["newUsername"];
+                    if ($newUsername!="") {
+                		$stmt2 = mysqli_query($connect, "UPDATE $table SET Login='$newUsername' WHERE Login='$username'");
                 	}
                     mysqli_close($connect);
 
