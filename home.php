@@ -250,12 +250,12 @@
                             <div class="text-danger font-italic" id="signup-response"></div>
                             <div class="form-group">
                                 <label><b>Email</b></label>
-                                <input type="email" class="form-control" placeholder="Enter Email" name="email" id="email"
+                                <input id="c_email" onchange="callServer();" type="email" class="form-control" placeholder="Enter Email" name="email" id="email"
                                     required data-toggle="tooltip" data-placement="right" title="Make sure to enter a valid email address.">
                             </div>
                             <div class="form-group">
                                 <label><b>Username</b></label>
-                                <input type="text" class="form-control" placeholder="Enter Username" name="username"
+                                <input id="c_user" onchange="callServer();" type="text" class="form-control" placeholder="Enter Username" name="username"
                                     required data-toggle="tooltip" data-placement="right" title="Usernames must be between 6 and 30 characters (inclusive).">
                             </div>
                             <div class="form-group">
