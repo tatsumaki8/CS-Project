@@ -89,18 +89,22 @@ if (isset($_POST["add"])) {
  edit();
 } elseif (isset($_POST["deleteAccount"])) {
     deleteAccount();
+} elseif (isset($_POST["changeAccount"])) {
+    changeAccount();
 } elseif (isset($_POST["change"])) {
  change();
 } else {
  echo "<h1 class='text-center mt-3' style='font-family:\"Retro Computer\";'> Welcome back $login </h1>";
- print <<<PAGE
+ print <<<PAGE1
     <div class="row">
-        <div class="col text-center">
+        <div class="col-2"></div>
+        <div class="col-4 text-center">
             <a href='#collapseOne' class='btn btn-success text-white text-center mb-3' data-toggle='collapse'>Add New Site Login</a>
         </div>
-        <div class="col text-center">
-            <a href='#collapseTwo' class='btn btn-success text-white text-center mb-3' data-toggle='collapse'>Delete Account</a>
+        <div class="col-4 text-center">
+            <a href='#collapseTwo' class='btn btn-success text-white text-center mb-3' data-toggle='collapse'>Change Account Information</a>
         </div>
+        <div class="col-2"></div>
     </div>
     <div class="row panel-collapse collapse" id='collapseOne'>
         <div class="col">
@@ -178,21 +182,56 @@ if (isset($_POST["add"])) {
         </div>
         </div>
     </div>
-    <div class="row panel-collapse collapse" id='collapseTwo'>
-        <div class="col-4"></div>
-        <div class="col-4 text-center">
+PAGE1;
+
+    $host = "fall-2018.cs.utexas.edu";
+    $user = "cs329e_mitra_vtruong";
+    $pwd = "Widen3sheep\$visa";
+    $dbs = "cs329e_mitra_vtruong";
+    $port = "3306";
+    $connect = mysqli_connect($host, $user, $pwd, $dbs, $port);
+    $table = "Lockbox";
+    if (empty($connect)) {
+        die("mysqli_connect failed: " . mysqli_connect_error());
+    }
+
+    $username = $_SESSION["username"];
+    $table = "Lockbox";
+    $result  = mysqli_query($connect, "SELECT * from $table WHERE username='$username'");
+    while ($row = $result->fetch_row()) {
+        print "<div class='row panel-collapse collapse' id='collapseTwo'>
+        <div class='col-6'>
+            <div class='form-group'>
+                <label><b>Old Email:</b></label>
+                <input class='form-control type=' text' placeholder='$row[1]' readonly>
+                </div>
+            <div class='form-group'>
+                <label><b>Old Username: </b></label>
+                <input class='form-control type=' text' placeholder='$row[0]' readonly>
+            </div>
+        </div>";
+    }
+    print <<<PAGE2
+        <div class="col-6">
             <form method="post" action="vault.php">
-                    <p class="text-center"><b>Are you sure you want to delete your Lockbox account? Deleting your account is permanent, and all information stored on Lockbox will be lost. You will automatically be logged out. </b></p>
-                    <input type="submit" value="Yes" name="deleteAccount" class="btn btn-success"/>&nbsp;
-                    <input type="reset" value="Cancel" class="btn btn-secondary" />
+                    <div class="form-group">
+                        <label> New Email:</label>
+                        <input class="form-control" type="text" name="newEmail" placeholder="name@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label> New Username:</label>
+                        <input class="form-control" type="text" name="newUsername" placeholder="Example">
+                    </div>
+                    <input type="submit" value="Enter" name="changeAccount" class="btn btn-success"/>&nbsp;
+                    <input type="reset" value="Reset" class="btn btn-secondary" />
             </form>
         </div>
-        <div class="col-4"></div>
+        <div class="col"></div>
     </div>
     <br />
     <div class="row">
         <div class="col-lg">
-PAGE;
+PAGE2;
  $host = "fall-2018.cs.utexas.edu";
  $user = "cs329e_mitra_valex8";
  $pwd  = "denote-naval9Deep";
@@ -429,7 +468,8 @@ PAGE;
                 </form>";
                 }
                 }
-                echo "<div class='text-center mt-3'><a href='logout.php'><button class='btn btn-danger'>Logout</button></a></div>";
+                echo "<div class='row'><div class='col-4'></div><div class='col-2'><div class='text-center mt-3'><form method='post' action='vault.php'><button name='deleteAccount' class='btn btn-dark text-white'>Delete Account</button></form></div></div>";
+                echo "<div class='col-2'><div class='text-center mt-3'><a href='logout.php'><button class='btn btn-danger'>Logout</button></a></div></div><div class='col-4'></div></div>";
                 function my_encrypt($data, $key) {
                 // Remove the base64 encoding from our key
                 $encryption_key = base64_decode($key);
@@ -480,6 +520,37 @@ PAGE;
                     $table   = "Vault";
                     $username = $_SESSION["username"];
                     $stmt = mysqli_query($connect, "DELETE FROM $table WHERE Login = '$username'");
+                    mysqli_close($connect);
+
+                    session_start();
+
+                    session_unset();
+                    session_destroy();
+                    header("Location: ./home.php");
+                }
+                function changeAccount(){
+                    $host = "fall-2018.cs.utexas.edu";
+                    $user = "cs329e_mitra_vtruong";
+                    $pwd = "Widen3sheep\$visa";
+                    $dbs = "cs329e_mitra_vtruong";
+                    $port = "3306";
+                    $connect = mysqli_connect($host, $user, $pwd, $dbs, $port);
+                    $table = "Lockbox";
+                    if (empty($connect)) {
+                    die("mysqli_connect failed: " . mysqli_connect_error());
+                    }
+
+                    $table = "Lockbox";
+                    $username = $_SESSION["username"];
+                    extract($_POST);
+                    $newEmail = $_POST["newEmail"];
+                    $newUsername = $_POST["newUsername"];
+                    if ($newEmail!="") {
+                		$stmt1 = mysqli_query($connect, "UPDATE $table SET email='$newEmail' WHERE username='$username'");
+                	}
+                	if ($newUsername!="") {
+                		$stmt2 = mysqli_query($connect, "UPDATE $table SET username='$newUsername' WHERE username='$username'");
+                	}
                     mysqli_close($connect);
 
                     session_start();
