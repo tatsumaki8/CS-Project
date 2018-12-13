@@ -366,12 +366,19 @@ PAGE;
             }
             $table = "Vault";
             $login = $_SESSION["username"];
+            $result = mysqli_query($connect, "SELECT * from $table");
+            $IDarray = array();
+            while ($row = $result->fetch_row()) {
+            array_push($IDarray, $row[0]);
+            }
+            $result->free();
+
             $result = mysqli_query($connect, "SELECT * from $table WHERE Login='$login'");
             while ($row = $result->fetch_row()) {
             $count = 0;
-            while ($count <= mysqli_num_rows(mysqli_query($connect, "SELECT * from $table" ))) {extract($_POST);if
-                (isset($_POST[$count])) {global $idEdit; $idEdit=$count; break;} else { $count++;}}} $stmt=mysqli_query($connect,
-                "SELECT * from $table WHERE ID = '$idEdit'" );while ($row=$stmt->fetch_row()) {
+            while ($count <= end($IDarray) + 1) {extract($_POST);if (isset($_POST[$count])) {global $idEdit; $idEdit=$count;
+                break;} else { $count++;}}} $stmt=mysqli_query($connect, "SELECT * from $table WHERE ID = '$idEdit'"
+                );while ($row=$stmt->fetch_row()) {
                 echo "<h1 class='text-center mt-3' style='font-family:\"Retro Computer\";'> Edit Info </h1>";
                 print
                 "<div class='row'>
