@@ -335,13 +335,19 @@ PAGE;
 
         $table = "Vault";
         $login = $_SESSION["username"];
+        $result = mysqli_query($connect, "SELECT * from $table");
+        $IDarray = array();
+        while ($row = $result->fetch_row()) {
+        array_push($IDarray, $row[0]);
+        }
+        $result->free();
+
         $result = mysqli_query($connect, "SELECT ID from $table WHERE Login='$login'");
 
         while ($row = $result->fetch_row()) {
         $count = 0;
-        while ($count <= mysqli_num_rows(mysqli_query($connect, "SELECT * from $table" ))) {extract($_POST);if
-            (isset($_POST[$count])) {$id=$count; break;} else { $count++;}}} $stmt=mysqli_query($connect,
-            "DELETE FROM $table WHERE ID = '$id'" ); $result->free();
+        while ($count <= end($IDarray) + 1) {extract($_POST);if (isset($_POST[$count])) {$id=$count; break;} else {
+            $count++;}}} $stmt=mysqli_query($connect, "DELETE FROM $table WHERE ID = '$id'" ); $result->free();
             mysqli_close($connect);
             header("Location: vault.php");
             }
@@ -419,7 +425,7 @@ PAGE;
                                     </tr>
                                     <tr>
                                         <td colspan='2' id'center'>
-                                            <input type='submit' value='Submit' name='editInfo' class='button' onclick='checkItem();' />&nbsp;
+                                            <input type='submit' value='Submit' name='editInfo' class='button' />&nbsp;
                                             <input type='submit' value='Cancel Change' name='cancelEdit' class='button' />
                                         </td>
                                     </tr>
