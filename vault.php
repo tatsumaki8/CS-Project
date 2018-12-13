@@ -417,7 +417,6 @@ PAGE2;
                 print
                 "<form method='post' action='edit.php'>
                     <div class='row'>
-                        <div class='col-2'></div>
                         <div class='col-4'>
                             <h3 class='text-center mt-3' style='font-family:\"Retro Computer\";'>Old</h3>
                             <div class='form-group'>
@@ -455,11 +454,60 @@ PAGE2;
                                 </div>
                                 <div class='form-group'>
                                     <label><b>Password:</b></label>
-                                    <input class='form-control type=' text' placeholder='Enter Password' name='passwordChange'>
+                                    <input class='form-control type=' text' placeholder='Enter Password' name='passwordChange' id='new_pw'>
                                 </div>
                             </div>
+                        </div>";
+                        print <<<PAGE
+                        
+                        <div class="col-4 text-center">
+                        <h3 class='text-center mt-3' style='font-family:"Retro Computer";'>Password Generator</h3>
+                <button type="button" class="btn btn-lg btn-success mb-3" onclick="generatePassword();" id="generatePassword">Generate
+                    Password</button><br>
+                <input type="text" class="mb-1 text-center text-info" name="generated_pw" id="generated_pw"
+                    readonly><br />
+                <script>
+                    window.addEventListener("load", function() {
+                        generatePassword();
+                    });
+                </script>
+                <button type="button" class="btn btn-sm btn-primary" onclick="copy();">Copy</button><br />
+                <div id="copied" class="font-italic text-muted"></div><br />
+                <div class="form-group">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="gen_pw_AZ" id="gen_pw_AZ" checked
+                            oninput="generatePassword();">
+                        <label class="form-check-label" for="gen_pw_AZ">A-Z</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="gen_pw_az" id="gen_pw_az" checked
+                            oninput="generatePassword();">
+                        <label class="form-check-label" for="gen_pw_AZ">a-z</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="gen_pw_09" id="gen_pw_num" checked
+                            oninput="generatePassword();">
+                        <label class="form-check-label" for="gen_pw_num">0-9</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="gen_pw_misc" id="gen_pw_misc" oninput="generatePassword();">
+                        <label class="form-check-label" for="gen_pw_misc">!@#$%^&*</label>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-2"></div>
+                        <div class="col-8">
+                            <input type="number" name="gen_pw_length_text" id="gen_pw_length_text" min=8 max=30
+                                oninput="sliderValue('gen_pw_length_text','gen_pw_length');" value="8">&nbsp;
+                            <input type="range" name="gen_pw_length" id="gen_pw_length" min="8" max="30" oninput="sliderValue('gen_pw_length', 'gen_pw_length_text');"
+                                value="8">
                         </div>
-                        <div class='col-2'></div>
+                        <div class="col-2"></div>
+                    </div>
+                </div>
+
+PAGE;
+                        
+                       print "</div>
                     </div>
                     <div class='text-center'>
                         <input type='submit' value='Submit' name='editInfo' class='btn btn-success' />
